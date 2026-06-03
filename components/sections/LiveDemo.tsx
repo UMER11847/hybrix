@@ -264,7 +264,7 @@ export default function LiveDemo() {
                   ))}
                 </div>
 
-                <div className="flex justify-between mt-3 text-[10px] text-slate-500">
+                <div className="flex justify-between mt-3 text-[7px] text-slate-500">
                   <span>M</span>
                   <span>T</span>
                   <span>W</span>
@@ -277,7 +277,7 @@ export default function LiveDemo() {
             </div>
 
             {/* Bottom KPIs */}
-            <div className="grid grid-cols-3 gap-4 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
               <div className="glass-light rounded-2xl p-4 text-center">
                 <div className="text-xl font-bold text-white">72%</div>
                 <div className="text-xs text-slate-500">

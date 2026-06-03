@@ -7,11 +7,11 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-primary grid-bg">
       {/* Background glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/8 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-emerald-600/8 blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-emerald-400/6 blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] lg:w-[600px] lg:h-[600px] rounded-full bg-emerald-500/8 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] lg:w-[400px] lg:h-[400px] rounded-full bg-emerald-600/8 blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] sm:w-[680px] sm:h-[680px] lg:w-[800px] lg:h-[800px] rounded-full bg-emerald-400/6 blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 py-24 pt-36 w-full">
+      <div className="max-w-7xl mx-auto px-6 py-20 sm:py-24 pt-32 sm:pt-36 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div>
