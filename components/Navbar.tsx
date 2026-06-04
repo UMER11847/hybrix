@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { Menu, X, Zap } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
-import { CALENDLY_URL } from '@/lib/constants'
+import CalendlyButton from './CalendlyButton'
 
 const navLinks = [
   { label: 'Solutions', href: '#solutions' },
@@ -102,14 +102,11 @@ export default function Navbar() {
           >
             Sign In
           </a>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <CalendlyButton
             className="text-sm font-semibold px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white transition-all duration-200 glow-button"
           >
-            Book Free Demo
-          </a>
+            Book Free Consultation
+          </CalendlyButton>
         </div>
 
         <div className="md:hidden flex items-center gap-2">
@@ -148,15 +145,12 @@ export default function Navbar() {
             >
               Sign In
             </a>
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
+            <CalendlyButton
               className="block text-center font-semibold px-5 py-3 rounded-xl bg-emerald-500 text-white"
+              onClick={() => setMenuOpen(false)}
             >
               Book Free Demo
-            </a>
+            </CalendlyButton>
           </div>
         </div>
       )}

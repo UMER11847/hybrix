@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { Shield, Clock, Zap, Globe, Phone, Mail, MessageSquare, ChevronDown, Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react'
+import CalendlyButton from '@/components/CalendlyButton'
 import { CALENDLY_URL } from '@/lib/constants'
 
 // --- TRUST SECTION ---
@@ -216,15 +217,12 @@ export function Footer() {
                 Book a free demo and we'll show you exactly how HybrixAI can be set up for your specific business in 48 hours.
               </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <CalendlyButton
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold transition-all duration-200 glow-button"
                 >
                   Book Free Demo
                   <ArrowRight size={18} />
-                </a>
+                </CalendlyButton>
                 <a
                   href="https://wa.me/1234567890"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl glass border border-white/10 hover:border-green-500/40 text-white font-semibold transition-all duration-200"
@@ -293,9 +291,15 @@ export function Footer() {
               <div className="text-xs text-slate-600 uppercase tracking-widest mb-5 font-medium">{col.title}</div>
               <div className="space-y-3">
                 {col.links.map(([label, href]) => (
-                  <a key={label} href={href} className="block text-sm text-slate-400 hover:text-white transition-colors">
-                    {label}
-                  </a>
+                  label === 'Book a Demo' ? (
+                    <CalendlyButton key={label} className="block text-sm text-slate-400 hover:text-white transition-colors">
+                      {label}
+                    </CalendlyButton>
+                  ) : (
+                    <a key={label} href={href} className="block text-sm text-slate-400 hover:text-white transition-colors">
+                      {label}
+                    </a>
+                  )
                 ))}
               </div>
             </div>

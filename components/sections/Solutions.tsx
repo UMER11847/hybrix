@@ -1,6 +1,6 @@
 'use client'
 import { Phone, Calendar, Users, BarChart2, MessageSquare, Share2, Bot, Zap } from 'lucide-react'
-import { CALENDLY_URL } from '@/lib/constants'
+import CalendlyButton from '@/components/CalendlyButton'
 
 const solutions = [
   { 
@@ -78,14 +78,11 @@ export default function Solutions() {
             <div className="text-xl font-display font-700 text-white mb-1">Ready to put AI to work?</div>
             <div className="text-slate-400 text-sm">Setup takes less than 48 hours. No technical knowledge required.</div>
           </div>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <CalendlyButton
             className="flex-shrink-0 px-7 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold text-sm transition-all duration-200 glow-button"
           >
-            Book Free Demo
-          </a>
+            Book Free Consultation
+          </CalendlyButton>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import { ArrowRight, Play, Phone, MessageSquare, BarChart3, CheckCircle, Mic } from 'lucide-react'
-import { CALENDLY_URL } from '@/lib/constants'
+import CalendlyButton from '@/components/CalendlyButton'
 
 export default function Hero() {
   return (
@@ -47,15 +47,12 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <CalendlyButton
                 className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold text-base transition-all duration-200 glow-button group"
               >
                 Book Free Demo
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </CalendlyButton>
               <a
                 href="#live-demo"
                 className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl glass border border-white/10 hover:border-emerald-500/40 text-white font-semibold text-base transition-all duration-200 group"
