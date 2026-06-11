@@ -3,12 +3,21 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'HybrixAI — AI Call Assistants & Chatbots for Modern Businesses',
-  description: 'Never miss another customer call. Our AI employees work 24/7 to answer calls, book appointments, capture leads, and support customers — so you don\'t have to.',
-  keywords: 'AI call assistant, AI chatbot, business automation, AI receptionist, lead capture, appointment booking',
+  title: 'HybrixAI - AI Voice Agents & Business Automation',
+  description:
+    'AI voice agents that answer calls, book appointments, capture leads and support customers 24/7.',
+  keywords: [
+    'AI voice agent',
+    'AI receptionist',
+    'AI phone answering',
+    'AI automation',
+    'business automation'
+  ],
   openGraph: {
-    title: 'HybrixAI — AI Automation for Real Businesses',
-    description: 'Turn missed calls into paying customers with 24/7 AI-powered call assistants and chatbots.',
+    title: 'HybrixAI',
+    description: 'AI Voice Agents for Businesses',
+    url: 'https://hybrixai.com',
+    siteName: 'HybrixAI',
     type: 'website',
   },
 }

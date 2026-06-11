@@ -186,7 +186,7 @@ export function FAQ() {
           <p className="text-white font-semibold mb-2">Still have questions?</p>
           <p className="text-slate-400 text-sm mb-6">Our team will answer any specific questions about your business requirements.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="mailto:hello@nexusai.io" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass border border-white/10 text-slate-300 hover:text-white text-sm transition-colors">
+            <a href="mailto:hybrixai@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass border border-white/10 text-slate-300 hover:text-white text-sm transition-colors">
               <Mail size={15} /> Email Us
             </a>
             <a href="https://wa.me/1234567890" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-green-500/20 border border-green-500/20 text-green-300 hover:text-green-200 text-sm transition-colors">
@@ -279,7 +279,7 @@ export function Footer() {
             },
             {
               title: 'Contact', links: [
-                ['hello@nexusai.io', 'mailto:hello@nexusai.io'],
+                ['hybrixai@gmail.com', 'mailto:hybrixai@gmail.com'],
                 ['Book a Demo', CALENDLY_URL],
                 ['WhatsApp', 'https://wa.me/1234567890'],
                 ['Support', '#'],
