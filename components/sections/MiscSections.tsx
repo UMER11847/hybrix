@@ -279,7 +279,7 @@ export function Footer() {
             },
             {
               title: 'Contact', links: [
-                ['hello@nexusai.io', 'mailto:hello@nexusai.io'],
+                ['hybrixai@gmail.com', 'mailto:hybrixai@gmail.com'],
                 ['Book a Demo', CALENDLY_URL],
                 ['WhatsApp', 'https://wa.me/1234567890'],
                 ['Support', '#'],
