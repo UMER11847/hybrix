@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     siteName: 'HybrixAI',
     type: 'website',
   },
+  icons: {
+    icon: '/logo2.svg',
+    shortcut: '/logo2.svg',
+    apple: '/logo2.svg',
+  },
 }
 
 export default function RootLayout({

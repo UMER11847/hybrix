@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import clsx from 'clsx'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import CalendlyButton from './CalendlyButton'
 
@@ -65,8 +66,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center glow-blue">
-            <Zap size={16} className="text-white" fill="white" />
+          <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/8 flex items-center justify-center glow-blue">
+            <Image
+              src="/logo2.svg"
+              alt="HybrixAI logo"
+              width={32}
+              height={32}
+              priority
+              className="w-full h-full object-contain"
+            />
           </div>
           <span className="font-display font-700 text-xl tracking-tight text-white">
             Hybrix<span className="gradient-text-blue">AI</span>
