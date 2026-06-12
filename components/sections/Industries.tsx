@@ -7,9 +7,9 @@ const industries = [
     title: 'Clinics & Doctors',
     problem: 'Patients call for appointments, test results, and emergencies at all hours. Reception staff can\'t keep up.',
     solution: 'AI answers every call, books appointments, sends reminders, and escalates urgent cases to medical staff instantly.',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
-    border: 'hover:border-emerald-500/30',
+    color: 'text-purple-400',
+    bg: 'bg-purple-500/15',
+    border: 'hover:border-purple-500/40',
     tag: 'Healthcare',
   },
   {
@@ -17,9 +17,9 @@ const industries = [
     title: 'Real Estate Agencies',
     problem: 'Leads call at all hours asking about listings. Missing a single call can mean losing a million-dollar deal.',
     solution: 'AI qualifies every inquiry, schedules property viewings, and immediately alerts agents about serious buyers.',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
-    border: 'hover:border-emerald-500/30',
+    color: 'text-pink-400',
+    bg: 'bg-pink-500/15',
+    border: 'hover:border-pink-500/40',
     tag: 'Real Estate',
   },
   {
@@ -27,9 +27,9 @@ const industries = [
     title: 'Salons & Spas',
     problem: 'Stylists are with clients all day and can\'t answer booking calls. No-shows cost the business daily.',
     solution: 'AI handles all booking calls, sends reminders to reduce no-shows, and manages cancellations automatically.',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
-    border: 'hover:border-emerald-500/30',
+    color: 'text-blue-400',
+    bg: 'bg-blue-500/15',
+    border: 'hover:border-blue-500/40',
     tag: 'Beauty',
   },
   {
@@ -38,8 +38,8 @@ const industries = [
     problem: 'Reservation calls come in during the busiest kitchen hours. Staff are too overwhelmed to answer properly.',
     solution: 'AI takes reservations, answers menu questions, handles delivery inquiries, and manages waitlists hands-free.',
     color: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
-    border: 'hover:border-emerald-500/30',
+    bg: 'bg-emerald-500/15',
+    border: 'hover:border-emerald-500/40',
     tag: 'Hospitality',
   },
   {
@@ -47,9 +47,9 @@ const industries = [
     title: 'Car Dealerships',
     problem: 'Customers call to ask about inventory, pricing, and test drives. Sales teams miss high-intent buyers daily.',
     solution: 'AI pre-qualifies buyers, schedules test drives, and routes serious customers straight to your top salespeople.',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
-    border: 'hover:border-emerald-500/30',
+    color: 'text-purple-400',
+    bg: 'bg-purple-500/15',
+    border: 'hover:border-purple-500/40',
     tag: 'Automotive',
   },
   {
@@ -57,9 +57,9 @@ const industries = [
     title: 'Law Firms',
     problem: 'Potential clients need immediate responses. Missing their call means they call the next firm on their list.',
     solution: 'AI intakes new cases 24/7, gathers initial case details, qualifies leads, and schedules consultations instantly.',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
-    border: 'hover:border-emerald-500/30',
+    color: 'text-pink-400',
+    bg: 'bg-pink-500/15',
+    border: 'hover:border-pink-500/40',
     tag: 'Legal',
   },
 ]
@@ -68,13 +68,14 @@ export default function Industries() {
   return (
     <section id="industries" className="section-padding bg-primary relative overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald-600/5 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-600/6 blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-pink-500/4 blur-[80px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-sm text-emerald-300 font-medium">Industries We Serve</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-purple-500/30">
+            <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+            <span className="text-sm text-purple-300 font-medium">Industries We Serve</span>
           </div>
         </div>
 

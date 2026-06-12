@@ -1,5 +1,6 @@
 'use client'
 import { Search, Cpu, CheckCircle } from 'lucide-react'
+import AnimateInView from '@/components/AnimateInView'
 
 const steps = [
   {
@@ -42,7 +43,7 @@ export default function HowItWorks() {
     <section id="how-it-works" className="section-padding bg-secondary relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-600/5 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-green-500/20">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -50,7 +51,7 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        <div className="text-center mb-20 max-w-3xl mx-auto">
+        <AnimateInView className="text-center mb-20 max-w-3xl mx-auto">
           <h2 className="font-display text-4xl md:text-5xl font-800 leading-tight tracking-tight text-white mb-5">
             From Onboarding to
             <span className="gradient-text"> AI Going Live </span>
@@ -59,7 +60,7 @@ export default function HowItWorks() {
           <p className="text-lg text-slate-400 leading-relaxed">
             No technical knowledge required. We handle everything from setup to training. You just approve and launch.
           </p>
-        </div>
+        </AnimateInView>
 
         {/* Steps */}
         <div className="relative">
@@ -68,16 +69,17 @@ export default function HowItWorks() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {steps.map((step, i) => (
-              <div key={i} className="relative">
+              <AnimateInView key={i} delay={i * 0.12}>
+              <div className="relative">
                 {/* Step number bubble */}
                 <div className="flex justify-center lg:justify-start mb-8 lg:mb-0">
-                  <div className={`relative z-10 w-14 h-14 ${step.bg} border-2 ${step.border} rounded-2xl flex items-center justify-center mb-6 lg:mb-8`}
+                  <div className={`relative z-10 w-14 h-14 ${step.bg} border-2 ${step.border} rounded-2xl flex items-center justify-center mb-6 lg:mb-8 transition-transform duration-300 hover:scale-110`}
                     style={{ boxShadow: `0 0 30px ${step.glow}` }}>
                     <step.icon size={22} className={step.color} />
                   </div>
                 </div>
 
-                <div className="glass border border-white/6 rounded-3xl p-7">
+                <div className="glass border border-white/6 rounded-3xl p-7 card-hover h-full">
                   <div className={`text-5xl font-display font-800 ${step.color} opacity-20 mb-4 leading-none`}>
                     {step.number}
                   </div>
@@ -94,11 +96,13 @@ export default function HowItWorks() {
                   </div>
                 </div>
               </div>
+              </AnimateInView>
             ))}
           </div>
         </div>
 
         {/* Timeline footer */}
+        <AnimateInView delay={0.2}>
         <div className="mt-16 glass border border-white/8 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <div className="text-2xl font-display font-700 text-white mb-2">Ready in 48 hours. Results from day one.</div>
@@ -111,6 +115,7 @@ export default function HowItWorks() {
             Start the Process →
           </a>
         </div>
+        </AnimateInView>
       </div>
     </section>
   )

@@ -38,14 +38,15 @@ const solutions = [
 export default function Solutions() {
   return (
     <section id="solutions" className="section-padding bg-secondary relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-emerald-500/5 blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-purple-500/8 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[300px] rounded-full bg-pink-500/6 blur-[80px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         {/* Badge */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-sm text-emerald-300 font-medium">Our AI Products</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-purple-500/30">
+            <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+            <span className="text-sm text-purple-300 font-medium">Our AI Products</span>
           </div>
         </div>
 
@@ -62,9 +63,9 @@ export default function Solutions() {
         {/* Solutions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {solutions.map((solution, i) => (
-            <div key={i} className="glass border border-white/6 rounded-2xl p-8 card-hover group">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors duration-300">
-                <solution.icon size={24} className="text-emerald-400" />
+            <div key={i} className="glass border border-purple-500/20 rounded-2xl p-8 card-hover group glow-card hover:border-purple-500/40 transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center mb-6 group-hover:from-purple-600/30 group-hover:to-pink-600/30 transition-colors duration-300">
+                <solution.icon size={24} className="text-purple-400" />
               </div>
               <h3 className="text-xl font-display font-700 text-white mb-4">{solution.title}</h3>
               <p className="text-slate-400 leading-relaxed">{solution.desc}</p>
@@ -73,13 +74,13 @@ export default function Solutions() {
         </div>
 
         {/* CTA strip */}
-        <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 glass border border-white/8 rounded-3xl p-8">
+        <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 glass border border-purple-500/30 rounded-3xl p-8 glow-card">
           <div className="text-center sm:text-left">
             <div className="text-xl font-display font-700 text-white mb-1">Ready to put AI to work?</div>
             <div className="text-slate-400 text-sm">Setup takes less than 48 hours. No technical knowledge required.</div>
           </div>
           <CalendlyButton
-            className="flex-shrink-0 px-7 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold text-sm transition-all duration-200 glow-button"
+            className="flex-shrink-0 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold text-sm transition-all duration-200 glow-button"
           >
             Book Free Consultation
           </CalendlyButton>

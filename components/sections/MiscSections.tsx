@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { Shield, Clock, Zap, Globe, Phone, Mail, MessageSquare, ChevronDown, Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react'
 import CalendlyButton from '@/components/CalendlyButton'
+import AnimateInView from '@/components/AnimateInView'
 import { CALENDLY_URL } from '@/lib/constants'
 
 // --- TRUST SECTION ---
@@ -12,40 +13,48 @@ const trustItems = [
   { icon: Globe, title: 'Multi-Platform Support', desc: 'Works on your website, WhatsApp, phone system, and any CRM you already use.' },
 ]
 
+const integrations = ['HubSpot', 'Salesforce', 'Google Calendar', 'WhatsApp Business', 'Calendly', 'Twilio', 'Zoho CRM', 'Slack']
+
 export function Trust() {
   return (
     <section className="section-padding bg-secondary relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <AnimateInView className="text-center mb-14">
           <h2 className="font-display text-3xl md:text-4xl font-800 text-white mb-4">
             Built to Be <span className="gradient-text">Trusted</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto">Enterprise infrastructure, professional support, and the reliability your business depends on.</p>
-        </div>
+        </AnimateInView>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
           {trustItems.map((item, i) => (
-            <div key={i} className="glass border border-white/6 rounded-2xl p-6 card-hover">
+            <AnimateInView key={i} delay={i * 0.08}>
+            <div className="glass border border-white/6 rounded-2xl p-6 card-hover h-full icon-glow-hover">
               <div className="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4">
                 <item.icon size={18} className="text-emerald-400" />
               </div>
               <h3 className="text-sm font-semibold text-white mb-2">{item.title}</h3>
               <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
             </div>
+            </AnimateInView>
           ))}
         </div>
 
-        {/* Partner logos placeholder */}
-        <div className="glass border border-white/6 rounded-3xl p-8">
+        {/* Partner logos */}
+        <AnimateInView delay={0.15}>
+        <div className="glass border border-white/6 rounded-3xl p-8 overflow-hidden">
           <div className="text-center text-xs text-slate-600 uppercase tracking-widest mb-8">Trusted Integrations</div>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {['HubSpot', 'Salesforce', 'Google Calendar', 'WhatsApp Business', 'Calendly', 'Twilio', 'Zoho CRM', 'Slack'].map((logo) => (
-              <div key={logo} className="px-5 py-2.5 glass-light rounded-xl border border-white/5">
-                <span className="text-slate-500 text-sm font-medium">{logo}</span>
-              </div>
-            ))}
+          <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div className="marquee-track gap-8">
+              {[...integrations, ...integrations].map((logo, i) => (
+                <div key={`${logo}-${i}`} className="px-5 py-2.5 glass-light rounded-xl border border-white/5 flex-shrink-0 transition-colors duration-300 hover:border-emerald-500/30 hover:bg-emerald-500/5">
+                  <span className="text-slate-500 text-sm font-medium whitespace-nowrap">{logo}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+        </AnimateInView>
       </div>
     </section>
   )
@@ -58,7 +67,7 @@ export function About() {
       <div className="absolute inset-0 grid-bg opacity-20" />
       <div className="absolute top-0 left-0 w-[500px] h-[400px] bg-emerald-500/5 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20 mb-8">
@@ -205,7 +214,7 @@ export function Footer() {
     <footer id="contact" className="bg-primary border-t border-white/5">
       {/* CTA Banner */}
       <div id="book-demo" className="border-b border-white/5 scroll-mt-28">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-16">
           <div className="relative overflow-hidden glass border border-emerald-500/20 rounded-3xl p-10 md:p-16 text-center">
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 to-emerald-700/8" />
             <div className="relative">
@@ -237,7 +246,7 @@ export function Footer() {
       </div>
 
       {/* Footer links */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-5">

@@ -43,7 +43,7 @@ export default function CaseStudies() {
     <section className="section-padding bg-secondary relative overflow-hidden">
       <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-emerald-600/5 blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20">
             <TrendingUp size={13} className="text-emerald-400" />

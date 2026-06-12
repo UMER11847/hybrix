@@ -24,9 +24,9 @@ const plans = [
     ],
     cta: 'Get Started',
     popular: false,
-    accent: 'border-white/8',
+    accent: 'border-purple-500/20',
     ctaStyle:
-      'bg-white/8 hover:bg-white/12 text-white border border-white/10',
+      'bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 text-white border border-purple-500/30',
   },
   {
     name: 'Growth',
@@ -50,9 +50,9 @@ const plans = [
     ],
     cta: 'Most Popular — Book Demo',
     popular: true,
-    accent: 'border-emerald-500/40',
+    accent: 'border-purple-500/50',
     ctaStyle:
-      'bg-emerald-500 hover:bg-emerald-400 text-white glow-button',
+      'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white glow-button',
   },
   {
     name: 'Pro',
@@ -76,9 +76,9 @@ const plans = [
     ],
     cta: 'Book Strategy Call',
     popular: false,
-    accent: 'border-white/8',
+    accent: 'border-purple-500/20',
     ctaStyle:
-      'bg-white/8 hover:bg-white/12 text-white border border-white/10',
+      'bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 text-white border border-purple-500/30',
   },
   {
     name: 'Enterprise',
@@ -102,9 +102,9 @@ const plans = [
     ],
     cta: 'Contact Sales',
     popular: false,
-    accent: 'border-white/8',
+    accent: 'border-purple-500/20',
     ctaStyle:
-      'bg-white/8 hover:bg-white/12 text-white border border-white/10',
+      'bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 text-white border border-purple-500/30',
   },
 ]
 
@@ -198,10 +198,11 @@ export default function Pricing() {
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500/5 blur-[100px] pointer-events-none" />
 
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-sm text-emerald-300 font-medium">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-purple-500/30">
+            <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+            <span className="text-sm text-purple-300 font-medium">
               HYBRIX AI PRICING
             </span>
           </div>
@@ -212,7 +213,6 @@ export default function Pricing() {
             Build Your
             <span className="gradient-text"> AI Workforce</span>
           </h2>
-
           <p className="text-lg text-slate-400">
             From AI chatbots and appointment booking to AI call agents and
             complete marketing automation, Hybrix helps businesses capture
@@ -221,28 +221,25 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="mb-12 rounded-3xl border border-emerald-500/20 glass p-8 text-center">
+        <div className="mb-12 rounded-3xl border border-purple-500/30 glass p-8 text-center glow-card">
           <h3 className="text-2xl font-display font-700 text-white mb-3">
             Most Clients Save 20–40 Hours Per Week
           </h3>
-
           <p className="text-slate-400 mb-6">
             Recover more leads, automate repetitive work, and generate ROI
             within weeks—not months.
           </p>
-
           <a
             href="#demo"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold transition-all duration-200 glow-button"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold transition-all duration-200 glow-button"
           >
             Book Free Strategy Call
             <ArrowRight size={16} />
           </a>
         </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-6">
-          <p className="text-sm uppercase tracking-[0.35em] text-emerald-400 font-semibold mb-3">
+          <p className="text-sm uppercase tracking-[0.35em] text-purple-400 font-semibold mb-3">
             Recommended Hybrix Packages
           </p>
         </div>
@@ -253,26 +250,21 @@ export default function Pricing() {
               key={i}
               className={`relative glass border ${plan.accent} rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 ${
                 plan.popular
-                  ? 'ring-1 ring-emerald-500/30 shadow-[0_0_60px_rgba(16,185,129,0.12)]'
-                  : ''
+                  ? 'ring-1 ring-purple-500/40 shadow-[0_0_80px_rgba(139,92,246,0.2)] glow-card'
+                  : 'hover:shadow-[0_0_40px_rgba(139,92,246,0.1)]'
               }`}
             >
               <div className="flex items-center gap-3 mb-6">
                 <div
                   className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                    plan.popular ? 'bg-emerald-500/20' : 'bg-white/5'
+                    plan.popular ? 'bg-gradient-to-br from-purple-600 to-pink-600' : 'bg-purple-500/15'
                   }`}
                 >
                   <plan.icon
                     size={18}
-                    className={
-                      plan.popular
-                        ? 'text-emerald-400'
-                        : 'text-slate-400'
-                    }
+                    className={plan.popular ? 'text-white' : 'text-purple-400'}
                   />
                 </div>
-
                 <span className="text-lg font-display font-700 text-white">
                   {plan.name}
                 </span>
@@ -280,16 +272,14 @@ export default function Pricing() {
 
               <div className="mb-5">
                 <div className="mb-2">
-                  <span className="text-sm font-semibold text-emerald-400">
+                  <span className="text-sm font-semibold text-purple-400">
                     {plan.setupFee}
                   </span>
                 </div>
-
                 <span className="text-4xl font-display font-800 text-white">
                   {plan.price}
                 </span>
-
-                <span className="text-slate-500 text-sm ml-1">
+                <span className="text-slate-400 text-sm ml-1">
                   {plan.period}
                 </span>
               </div>
@@ -300,7 +290,7 @@ export default function Pricing() {
 
               <a
                 href="#demo"
-                className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-semibold text-sm transition-all duration-200 mb-8 ${plan.ctaStyle}`}
+                className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-semibold text-sm transition-all duration-200 mb-8 ${plan.ctaStyle} ${plan.popular ? 'glow-button' : ''}`}
               >
                 {plan.cta}
                 <ArrowRight size={15} />
@@ -313,10 +303,7 @@ export default function Pricing() {
                       size={15}
                       className="text-emerald-400 flex-shrink-0 mt-0.5"
                     />
-
-                    <span className="text-sm text-slate-300">
-                      {feature}
-                    </span>
+                    <span className="text-sm text-slate-300">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -331,7 +318,6 @@ export default function Pricing() {
               Individual
               <span className="gradient-text"> Service Pricing</span>
             </h3>
-
             <p className="text-slate-400 text-lg">
               Need a specific solution instead of a complete package? Choose
               individual AI services tailored to your business.
@@ -352,15 +338,12 @@ export default function Pricing() {
                   <div className="text-emerald-400 text-sm font-semibold mb-1">
                     Setup Fee
                   </div>
-
                   <div className="text-2xl font-display font-800 text-white mb-3">
                     {service.setupFee}
                   </div>
-
                   <div className="text-emerald-400 text-sm font-semibold mb-1">
                     Monthly Management
                   </div>
-
                   <div className="text-lg font-semibold text-slate-200">
                     {service.monthlyFee}
                   </div>
@@ -373,10 +356,7 @@ export default function Pricing() {
                         size={15}
                         className="text-emerald-400 flex-shrink-0 mt-0.5"
                       />
-
-                      <span className="text-sm text-slate-300">
-                        {feature}
-                      </span>
+                      <span className="text-sm text-slate-300">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -398,8 +378,6 @@ export default function Pricing() {
           optimization, and ongoing support.
         </p>
       </div>
-
-
     </section>
   )
 }
