@@ -1,5 +1,9 @@
 "use client"
+import { useRef } from 'react'
 import { TrendingUp, ArrowRight } from 'lucide-react'
+import SectionZone from '@/components/SectionZone'
+import Card3D from '@/components/Card3D'
+import { useScrollAnimation } from '@/components/animations/useScrollAnimation'
 
 const caseStudies = [
   {
@@ -39,11 +43,12 @@ const caseStudies = [
 ]
 
 export default function CaseStudies() {
-  return (
-    <section className="section-padding bg-secondary relative overflow-hidden">
-      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-emerald-600/5 blur-[100px] pointer-events-none" />
+  const sectionRef = useRef<HTMLDivElement>(null)
+  useScrollAnimation(sectionRef)
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+  return (
+    <SectionZone zone="case-studies" className="section-padding overflow-hidden">
+      <div ref={sectionRef} className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20">
             <TrendingUp size={13} className="text-emerald-400" />
@@ -63,7 +68,8 @@ export default function CaseStudies() {
 
         <div className="space-y-8">
           {caseStudies.map((cs, i) => (
-            <div key={i} className={`glass border ${cs.border} rounded-3xl overflow-hidden`}>
+            <Card3D key={i} intensity={6}>
+            <div data-animate className={`glass-panel-3d rounded-3xl overflow-hidden`}>
               <div className={`h-1 w-full bg-gradient-to-r ${cs.accent}`} />
               
               <div className="p-8 md:p-12">
@@ -109,6 +115,7 @@ export default function CaseStudies() {
                 </div>
               </div>
             </div>
+            </Card3D>
           ))}
         </div>
 
@@ -119,6 +126,6 @@ export default function CaseStudies() {
           </a>
         </div>
       </div>
-    </section>
+    </SectionZone>
   )
 }

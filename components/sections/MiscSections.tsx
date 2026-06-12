@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { Shield, Clock, Zap, Globe, Phone, Mail, MessageSquare, ChevronDown, Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react'
 import CalendlyButton from '@/components/CalendlyButton'
-import AnimateInView from '@/components/AnimateInView'
+import SectionZone from '@/components/SectionZone'
 import { CALENDLY_URL } from '@/lib/constants'
 
 // --- TRUST SECTION ---
@@ -17,32 +17,28 @@ const integrations = ['HubSpot', 'Salesforce', 'Google Calendar', 'WhatsApp Busi
 
 export function Trust() {
   return (
-    <section className="section-padding bg-secondary relative overflow-hidden">
+    <SectionZone zone="trust" className="section-padding overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-        <AnimateInView className="text-center mb-14">
+        <div data-animate className="text-center mb-14">
           <h2 className="font-display text-3xl md:text-4xl font-800 text-white mb-4">
             Built to Be <span className="gradient-text">Trusted</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto">Enterprise infrastructure, professional support, and the reliability your business depends on.</p>
-        </AnimateInView>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
           {trustItems.map((item, i) => (
-            <AnimateInView key={i} delay={i * 0.08}>
-            <div className="glass border border-white/6 rounded-2xl p-6 card-hover h-full icon-glow-hover">
+            <div key={i} data-animate className="glass-panel-3d rounded-2xl p-6 h-full icon-glow-hover">
               <div className="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-4">
                 <item.icon size={18} className="text-emerald-400" />
               </div>
               <h3 className="text-sm font-semibold text-white mb-2">{item.title}</h3>
               <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
             </div>
-            </AnimateInView>
           ))}
         </div>
 
-        {/* Partner logos */}
-        <AnimateInView delay={0.15}>
-        <div className="glass border border-white/6 rounded-3xl p-8 overflow-hidden">
+        <div data-animate className="glass-panel-3d rounded-3xl p-8 overflow-hidden">
           <div className="text-center text-xs text-slate-600 uppercase tracking-widest mb-8">Trusted Integrations</div>
           <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div className="marquee-track gap-8">
@@ -54,19 +50,15 @@ export function Trust() {
             </div>
           </div>
         </div>
-        </AnimateInView>
       </div>
-    </section>
+    </SectionZone>
   )
 }
 
 // --- ABOUT SECTION ---
 export function About() {
   return (
-    <section id="about" className="section-padding bg-primary relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      <div className="absolute top-0 left-0 w-[500px] h-[400px] bg-emerald-500/5 blur-[120px] pointer-events-none" />
-
+    <SectionZone zone="about" id="about" className="section-padding overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -133,7 +125,7 @@ export function About() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionZone>
   )
 }
 
@@ -153,7 +145,7 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="section-padding bg-secondary relative overflow-hidden">
+    <SectionZone zone="faq" id="faq" className="section-padding overflow-hidden">
       <div className="max-w-4xl mx-auto px-6">
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10">
@@ -204,14 +196,14 @@ export function FAQ() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionZone>
   )
 }
 
 // --- FOOTER ---
 export function Footer() {
   return (
-    <footer id="contact" className="bg-primary border-t border-white/5">
+    <SectionZone zone="footer" as="footer" id="contact" className="border-t border-white/5">
       {/* CTA Banner */}
       <div id="book-demo" className="border-b border-white/5 scroll-mt-28">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-16">
@@ -320,7 +312,7 @@ export function Footer() {
           <p className="text-slate-600 text-sm">Built for businesses that refuse to miss a single customer.</p>
         </div>
       </div>
-    </footer>
+    </SectionZone>
   )
 }
 

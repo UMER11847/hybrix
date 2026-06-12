@@ -1,3 +1,4 @@
+import HybrixExperience from '@/components/HybrixExperience'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/sections/Hero'
 import PainPoints from '@/components/sections/PainPoints'
@@ -14,24 +15,26 @@ import { Trust, About, FAQ, Footer, WhatsAppFloat } from '@/components/sections/
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
-      <Hero />
-      <PainPoints />
-      <Solutions />
-      <Industries />
-      <HowItWorks />
-      <LiveDemo />
-      <Benefits />
-      <Testimonials />
-      <CaseStudies />
-      <Pricing />
-      <Trust />
-      <About />
-      <DemoSection />
-      <FAQ />
-      <Footer />
-      <WhatsAppFloat />
-    </main>
+    <HybrixExperience>
+      <main>
+        <Navbar />
+        <Hero />
+        <PainPoints />
+        <Solutions />
+        <Industries />
+        <HowItWorks />
+        <LiveDemo />
+        <Benefits />
+        <Testimonials />
+        <CaseStudies />
+        <Pricing />
+        <Trust />
+        <About />
+        <DemoSection />
+        <FAQ />
+        <Footer />
+        <WhatsAppFloat />
+      </main>
+    </HybrixExperience>
   )
 }

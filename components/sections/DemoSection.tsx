@@ -2,15 +2,13 @@
 import { Calendar, ArrowRight, CheckCircle } from 'lucide-react'
 import CalendlyButton from '@/components/CalendlyButton'
 import EmailForm from '@/components/EmailForm'
+import SectionZone from '@/components/SectionZone'
 
 export default function DemoSection() {
   return (
-    <section id="demo" className="section-padding bg-primary relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-500/8 blur-[120px] pointer-events-none" />
-
+    <SectionZone zone="demo" id="demo" className="section-padding overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 relative">
-        <div className="glass border border-emerald-500/20 rounded-3xl overflow-hidden">
+        <div data-animate className="glass-panel-3d rounded-3xl overflow-hidden">
           <div className="h-1 w-full bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-400" />
           
           <div className="p-10 md:p-16">
@@ -57,6 +55,6 @@ export default function DemoSection() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionZone>
   )
 }

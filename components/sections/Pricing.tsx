@@ -1,6 +1,10 @@
 'use client'
 
+import { useRef } from 'react'
 import { CheckCircle, Zap, Building2, ArrowRight } from 'lucide-react'
+import SectionZone from '@/components/SectionZone'
+import Card3D from '@/components/Card3D'
+import { useScrollAnimation } from '@/components/animations/useScrollAnimation'
 
 const plans = [
   {
@@ -190,15 +194,12 @@ function TrendingUp(props: any) {
 }
 
 export default function Pricing() {
-  return (
-    <section
-      id="pricing"
-      className="section-padding bg-primary relative overflow-hidden"
-    >
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500/5 blur-[100px] pointer-events-none" />
+  const sectionRef = useRef<HTMLDivElement>(null)
+  useScrollAnimation(sectionRef)
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+  return (
+    <SectionZone zone="pricing" id="pricing" className="section-padding overflow-hidden">
+      <div ref={sectionRef} className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-purple-500/30">
             <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
@@ -208,7 +209,7 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="text-center mb-16 max-w-4xl mx-auto">
+        <div data-animate className="text-center mb-16 max-w-4xl mx-auto">
           <h2 className="font-display text-4xl md:text-5xl font-800 leading-tight tracking-tight text-white mb-5">
             Build Your
             <span className="gradient-text"> AI Workforce</span>
@@ -246,12 +247,11 @@ export default function Pricing() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
           {plans.map((plan, i) => (
+            <Card3D key={i}>
             <div
-              key={i}
-              className={`relative glass border ${plan.accent} rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 ${
-                plan.popular
-                  ? 'ring-1 ring-purple-500/40 shadow-[0_0_80px_rgba(139,92,246,0.2)] glow-card'
-                  : 'hover:shadow-[0_0_40px_rgba(139,92,246,0.1)]'
+              data-animate
+              className={`relative glass-panel-3d pricing-panel-3d rounded-3xl p-8 h-full ${
+                plan.popular ? 'pricing-panel-popular' : ''
               }`}
             >
               <div className="flex items-center gap-3 mb-6">
@@ -308,6 +308,7 @@ export default function Pricing() {
                 ))}
               </div>
             </div>
+            </Card3D>
           ))}
         </div>
 
@@ -378,6 +379,6 @@ export default function Pricing() {
           optimization, and ongoing support.
         </p>
       </div>
-    </section>
+    </SectionZone>
   )
 }

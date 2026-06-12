@@ -335,9 +335,9 @@ svg {
 }
 
 /* Theme utilities */
-.bg-primary { background-color: var(--bg-primary); }
+.bg-primary { background-color: transparent; }
+.bg-secondary { background-color: transparent; }
 .bg-primary-90 { background-color: var(--bg-nav); }
-.bg-secondary { background-color: var(--bg-secondary); }
 .bg-secondary-98 { background-color: var(--bg-nav-mobile); }
 .bg-card { background-color: var(--bg-card); }
 
@@ -674,4 +674,264 @@ select:focus,
 textarea:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+}
+
+/* ===== 3D WebGL Experience ===== */
+.hybrix-experience {
+  isolation: isolate;
+}
+
+.hybrix-canvas-layer {
+  opacity: 0.85;
+}
+
+.hybrix-canvas,
+.hybrix-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.hybrix-canvas-fallback {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 30%, rgba(6, 182, 212, 0.12), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(139, 92, 246, 0.1), transparent 50%),
+    #030712;
+}
+
+.hybrix-canvas-fallback-glow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.25), transparent 70%);
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Section zones — semi-transparent so WebGL shows through */
+.section-zone {
+  background: transparent !important;
+}
+
+.section-zone-content {
+  position: relative;
+}
+
+.zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 0%, rgba(3, 7, 18, 0.55) 100%);
+  z-index: 0;
+}
+
+.zone-hero .zone-overlay {
+  background: radial-gradient(ellipse 70% 50% at 30% 40%, rgba(3, 7, 18, 0.35) 0%, rgba(3, 7, 18, 0.75) 100%);
+}
+
+.zone-pain .zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(249, 115, 22, 0.06) 0%, rgba(3, 7, 18, 0.7) 100%);
+}
+
+.zone-solutions .zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(6, 182, 212, 0.06) 0%, rgba(3, 7, 18, 0.65) 100%);
+}
+
+.zone-industries .zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139, 92, 246, 0.06) 0%, rgba(3, 7, 18, 0.65) 100%);
+}
+
+.zone-how-it-works .zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(16, 185, 129, 0.05) 0%, rgba(3, 7, 18, 0.65) 100%);
+}
+
+.zone-live-demo .zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(59, 130, 246, 0.06) 0%, rgba(3, 7, 18, 0.7) 100%);
+}
+
+.zone-benefits .zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(16, 185, 129, 0.07) 0%, rgba(3, 7, 18, 0.65) 100%);
+}
+
+.zone-pricing .zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139, 92, 246, 0.07) 0%, rgba(3, 7, 18, 0.7) 100%);
+}
+
+.zone-demo .zone-overlay {
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(6, 182, 212, 0.1) 0%, rgba(3, 7, 18, 0.6) 100%);
+}
+
+/* 3D card tilt */
+.card-3d {
+  transform-style: preserve-3d;
+}
+
+.card-3d-inner {
+  backface-visibility: hidden;
+}
+
+/* Glass panel with neon edge */
+.glass-panel-3d {
+  background: rgba(10, 22, 40, 0.55);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 40px rgba(6, 182, 212, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel-3d:hover {
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 60px rgba(6, 182, 212, 0.12);
+}
+
+/* Problem zone alert cards */
+.alert-card {
+  border-color: rgba(249, 115, 22, 0.2) !important;
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.06);
+}
+
+.alert-card:hover {
+  border-color: rgba(249, 115, 22, 0.4) !important;
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.12);
+}
+
+/* Solution module cards */
+.module-card {
+  border-color: rgba(6, 182, 212, 0.15) !important;
+}
+
+.module-card:hover {
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  box-shadow: 0 0 50px rgba(6, 182, 212, 0.15);
+}
+
+/* Industry orbit cards */
+.orbit-card {
+  animation: orbit-float 6s ease-in-out infinite;
+}
+
+.orbit-card:nth-child(2) { animation-delay: 0.5s; }
+.orbit-card:nth-child(3) { animation-delay: 1s; }
+.orbit-card:nth-child(4) { animation-delay: 1.5s; }
+.orbit-card:nth-child(5) { animation-delay: 2s; }
+.orbit-card:nth-child(6) { animation-delay: 2.5s; }
+
+@keyframes orbit-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Pipeline step glow */
+.pipeline-step-active {
+  border-color: rgba(6, 182, 212, 0.5) !important;
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.2);
+}
+
+/* Metric tile glow */
+.metric-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.metric-tile:hover::before {
+  opacity: 1;
+}
+
+/* Pricing 3D panel */
+.pricing-panel-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.pricing-panel-3d:hover {
+  transform: translateY(-8px) rotateX(2deg);
+}
+
+.pricing-panel-popular {
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  box-shadow:
+    0 0 60px rgba(139, 92, 246, 0.2),
+    0 20px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Testimonial float */
+.testimonial-float {
+  animation: testimonial-drift 8s ease-in-out infinite;
+}
+
+.testimonial-float:nth-child(even) {
+  animation-delay: 2s;
+}
+
+@keyframes testimonial-drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.testimonial-float:hover {
+  animation-play-state: paused;
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Command center console */
+.command-console {
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow:
+    0 0 80px rgba(59, 130, 246, 0.1),
+    0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hybrix-canvas-layer {
+    opacity: 0.4;
+  }
+
+  .orbit-card,
+  .testimonial-float,
+  .float-card-1,
+  .float-card-2,
+  .orb-drift,
+  .orb-drift-slow,
+  .gradient-text,
+  .marquee-track {
+    animation: none !important;
+  }
+
+  .card-3d,
+  .pricing-panel-3d {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hybrix-canvas-layer {
+    opacity: 0.5;
+  }
+
+  .orbit-card {
+    animation: none;
+  }
 }

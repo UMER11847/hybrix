@@ -1,5 +1,10 @@
 'use client'
+
+import { useRef } from 'react'
 import { Star, Quote } from 'lucide-react'
+import SectionZone from '@/components/SectionZone'
+import Card3D from '@/components/Card3D'
+import { useScrollAnimation } from '@/components/animations/useScrollAnimation'
 
 const testimonials = [
   {
@@ -59,11 +64,12 @@ const testimonials = [
 ]
 
 export default function Testimonials() {
-  return (
-    <section className="section-padding bg-primary relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-20" />
+  const sectionRef = useRef<HTMLDivElement>(null)
+  useScrollAnimation(sectionRef)
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+  return (
+    <SectionZone zone="testimonials" className="section-padding overflow-hidden">
+      <div ref={sectionRef} className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20">
             <Star size={12} className="text-emerald-400" fill="currentColor" />
@@ -71,7 +77,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div data-animate className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="font-display text-4xl md:text-5xl font-800 leading-tight tracking-tight text-white mb-5">
             Businesses Love
             <span className="gradient-text"> What AI Does For Them</span>
@@ -83,7 +89,8 @@ export default function Testimonials() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
-            <div key={i} className={`glass border ${t.color} rounded-3xl p-7 card-hover flex flex-col`}>
+            <Card3D key={i} intensity={8}>
+            <div data-animate className={`glass-panel-3d testimonial-float rounded-3xl p-7 flex flex-col h-full`}>
               {/* Quote icon */}
               <Quote size={20} className="text-slate-700 mb-4" />
 
@@ -121,9 +128,10 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
+            </Card3D>
           ))}
         </div>
       </div>
-    </section>
+    </SectionZone>
   )
 }

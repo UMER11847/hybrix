@@ -60,7 +60,7 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled
-        ? 'bg-primary-90 backdrop-blur-xl border-b border-white/5 py-3'
+        ? 'bg-primary-90/80 backdrop-blur-2xl border-b border-cyan-500/10 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
         : 'bg-transparent py-5'
     }`}>
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center justify-between">

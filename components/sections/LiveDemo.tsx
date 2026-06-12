@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { MessageSquare, Send, Loader2 } from 'lucide-react'
+import SectionZone from '@/components/SectionZone'
+import { useScrollAnimation } from '@/components/animations/useScrollAnimation'
 
 type Message = {
   role: 'user' | 'ai'
@@ -17,6 +19,8 @@ export default function LiveDemo() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const chatEndRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  useScrollAnimation(sectionRef)
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -57,11 +61,8 @@ export default function LiveDemo() {
   }
 
   return (
-    <section id="live-demo" className="section-padding bg-primary relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/6 blur-[120px] pointer-events-none" />
-
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+    <SectionZone zone="live-demo" id="live-demo" className="section-padding overflow-hidden">
+      <div ref={sectionRef} className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20">
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -69,7 +70,7 @@ export default function LiveDemo() {
           </div>
         </div>
 
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div data-animate className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="font-display text-4xl md:text-5xl font-800 leading-tight tracking-tight text-white mb-5">
             Experience the AI
             <span className="gradient-text"> Before You Commit</span>
@@ -79,8 +80,8 @@ export default function LiveDemo() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
-          <div className="glass border border-white/8 rounded-3xl overflow-hidden">
+        <div data-animate className="grid lg:grid-cols-2 gap-8 items-start command-console glass-panel-3d rounded-3xl p-6 lg:p-8">
+          <div className="glass-light border border-white/8 rounded-3xl overflow-hidden">
             <div className="border-b border-white/6 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="flex gap-1.5">
@@ -178,7 +179,7 @@ export default function LiveDemo() {
             </div>
           </div>
 
-          <div className="glass border border-white/8 rounded-3xl p-6">
+          <div className="glass-light border border-white/8 rounded-3xl p-6">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <div className="text-xs text-slate-500 uppercase tracking-widest">
@@ -302,6 +303,6 @@ export default function LiveDemo() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionZone>
   )
 }
