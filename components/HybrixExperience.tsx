@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { ScrollJourneyProvider } from '@/components/animations/ScrollJourneyContext'
 
@@ -13,6 +14,11 @@ const HybrixCanvas = dynamic(() => import('@/components/three/HybrixCanvasLoader
 })
 
 export default function HybrixExperience({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    // Reset scroll to top on page load
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <ScrollJourneyProvider>
       <div className="hybrix-experience relative">

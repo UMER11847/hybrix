@@ -1,11 +1,24 @@
 'use client'
 import { useState } from 'react'
-import { Shield, Clock, Zap, Globe, Phone, Mail, MessageSquare, ChevronDown, Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react'
+
+import {
+  Shield,
+  Clock,
+  Zap,
+  Globe,
+  Phone,
+  Mail,
+  MessageSquare,
+  ChevronDown,
+  ArrowRight,
+} from 'lucide-react'
+
+import { FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
+
 import CalendlyButton from '@/components/CalendlyButton'
 import SectionZone from '@/components/SectionZone'
-import { CALENDLY_URL } from '@/lib/constants'
-
-// --- TRUST SECTION ---
+import { CALENDLY_URL } from '@/lib/constants'// --- TRUST SECTION ---
 const trustItems = [
   { icon: Shield, title: 'Enterprise-Grade Security', desc: 'SOC 2 compliant infrastructure. Your customer data is always encrypted and protected.' },
   { icon: Clock, title: 'Setup in 48 Hours', desc: 'Our team handles everything. You\'re live and automated within 2 business days.' },
@@ -69,10 +82,10 @@ export function About() {
               We're On a Mission to Give Every Business an
               <span className="gradient-text"> AI-Powered Team</span>
             </h2>
-            <p className="text-slate-400 leading-relaxed mb-6">
+            <p className="text-slate-300 leading-relaxed mb-6 bg-gradient-to-r from-slate-700 via-slate-500 to-slate-900 bg-clip-text text-transparent">
               HybrixAI was built because we watched too many great businesses lose customers simply because nobody answered the phone. Local clinics, real estate agencies, salons — hardworking businesses that deserve better tools.
             </p>
-            <p className="text-slate-400 leading-relaxed mb-10">
+            <p className="text-slate-300 bg-gradient-to-r from-slate-700 via-slate-500 to-slate-900 bg-clip-text text-transparent leading-relaxed mb-10">
               We build AI call assistants and chatbots that work exactly like a trained employee — just without the salary, the sick days, or the 5 PM checkout. Our mission is to make enterprise-grade AI automation accessible to every service business, not just the Fortune 500.
             </p>
 
@@ -251,11 +264,15 @@ export function Footer() {
               AI-powered call assistants and chatbots for modern service businesses.
             </p>
             <div className="flex gap-3">
-              {[Twitter, Linkedin, Instagram].map((Icon, i) => (
-                <a key={i} href="#" className="w-9 h-9 glass-light rounded-xl flex items-center justify-center hover:border-emerald-500/30 border border-white/5 transition-colors">
-                  <Icon size={15} className="text-slate-400" />
-                </a>
-              ))}
+             {[FaXTwitter, FaLinkedin, FaInstagram].map((Icon, i) => (
+          <a
+              key={i}
+              href="#"
+              className="w-9 h-9 glass-light rounded-xl flex items-center justify-center hover:border-emerald-500/30 border border-white/5 transition-colors"
+              >
+    <Icon size={15} className="text-slate-400" />
+  </a>
+))}
             </div>
           </div>
 
@@ -308,7 +325,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-600 text-sm">© 2024 HybrixAI. All rights reserved.</p>
+          <p className="text-slate-600 text-sm">© 2023 HybrixAI. All rights reserved.</p>
           <p className="text-slate-600 text-sm">Built for businesses that refuse to miss a single customer.</p>
         </div>
       </div>

@@ -48,7 +48,7 @@ export default function Hero() {
   )
 
   return (
-    <SectionZone zone="hero" className="min-h-screen flex items-center justify-center overflow-hidden">
+    <SectionZone zone="hero" className="min-h-screen flex items-center overflow-hidden">
       <div ref={containerRef} className="max-w-[1280px] mx-auto px-6 lg:px-10 py-24 sm:py-28 pt-36 sm:pt-40 w-full">
         <div ref={contentRef} className="grid lg:grid-cols-2 gap-16 xl:gap-24 items-center">
           {/* Left Content */}
@@ -63,16 +63,18 @@ export default function Hero() {
 
             <h1
               data-hero="headline"
-              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-800 leading-[1.02] tracking-tight mb-7"
+              className="font-display text-5xl md:text-6xl lg:text-7xl font-800 leading-[1.05] tracking-tight mb-6"
             >
               Never Miss{' '}
-              <span className="gradient-text">Another Customer</span>{' '}
+              <br />
+              <span className="gradient-text">Another Customer</span>
+              <br />
               Call Again
             </h1>
 
             <p
               data-hero="sub"
-              className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-xl"
+              className="text-lg bg-gradient-to-r from-cyan-400 via-sky-300 to-white bg-clip-text text-transparent text-slate-300 leading-relaxed mb-10 max-w-xl "
             >
               Your AI employee answers every call, books appointments, captures leads, and supports customers around the clock — without salaries, breaks, or sick days.
             </p>
@@ -86,14 +88,14 @@ export default function Hero() {
               ))}
             </div>
 
-            <div data-hero="cta" className="flex flex-col sm:flex-row gap-4">
-              <CalendlyButton className="btn-shine inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-semibold text-lg transition-all duration-200 glow-button group hover:-translate-y-0.5">
+            <div data-hero="cta" className="flex flex-col sm:flex-row flex-wrap gap-4">
+              <CalendlyButton className="w-full sm:w-auto btn-shine inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-semibold text-lg transition-all duration-200 glow-button group hover:-translate-y-0.5">
                 Book Free Demo
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </CalendlyButton>
               <a
                 href="#live-demo"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl glass-panel-3d text-white font-semibold text-lg transition-all duration-200 group hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white/8 border border-white/15 text-white font-semibold text-lg shadow-[0_10px_24px_rgba(15,23,42,0.35)] backdrop-blur-xl transition-all duration-200 group hover:-translate-y-0.5 hover:bg-white/12 hover:border-cyan-400/40 hover:shadow-[0_14px_30px_rgba(34,211,238,0.16)]"
               >
                 <div className="w-7 h-7 rounded-full bg-cyan-500/20 flex items-center justify-center">
                   <Play size={11} className="text-cyan-400 ml-0.5" fill="currentColor" />
@@ -102,30 +104,30 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center gap-6 sm:gap-8 pt-8 border-t border-cyan-500/10">
+            <div className="mt-12 flex items-center gap-6 pt-8 border-t border-white/5">
               {[
-                { value: '500+', label: 'Businesses Automated', color: 'text-cyan-400' },
-                { value: '98%', label: 'Call Answer Rate', color: 'text-violet-400' },
-                { value: '3x', label: 'More Leads Captured', color: 'text-emerald-400' },
+                { value: '500+', label: 'Businesses Automated' },
+                { value: '98%', label: 'Call Answer Rate' },
+                { value: '3x', label: 'More Leads Captured' },
               ].map((stat, i) => (
-                <div key={stat.label} className="flex items-center gap-6 sm:gap-8">
-                  {i > 0 && <div className="hidden sm:block w-px h-12 bg-cyan-500/20" />}
+                <div key={stat.label} className="flex items-center gap-6">
+                  {i > 0 && <div className="w-px h-10 bg-white/10" />}
                   <div data-hero="stat">
-                    <div className="text-3xl font-display font-700 text-white">{stat.value}</div>
-                    <div className={`text-sm ${stat.color} font-medium mt-0.5`}>{stat.label}</div>
+                    <div className="text-2xl font-display font-700 text-white">{stat.value}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{stat.label}</div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right — 3D-style Dashboard */}
+          {/* Right — Dashboard Mockup */}
           <div
             ref={dashboardRef}
-            className="relative hidden lg:block"
+            className="relative hidden lg:block w-full max-w-[620px] ml-auto"
             style={parallax.style}
           >
-            <div className="relative glass-panel-3d rounded-3xl p-7 animate-float">
+            <div className="relative glass-panel-3d rounded-3xl p-6 animate-float w-full">
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <div className="text-xs text-cyan-400 uppercase tracking-widest mb-1 font-semibold">AI Dashboard</div>
@@ -143,19 +145,19 @@ export default function Hero() {
                   { label: 'Chats Active', value: '38', icon: MessageSquare, color: 'text-violet-400', bg: 'bg-violet-500/15' },
                   { label: 'Leads Captured', value: '91', icon: BarChart3, color: 'text-emerald-400', bg: 'bg-emerald-500/15' },
                 ].map((stat) => (
-                  <div key={stat.label} className="glass-light rounded-2xl p-5 metric-tile">
-                    <div className={`w-9 h-9 rounded-xl ${stat.bg} flex items-center justify-center mb-3`}>
-                      <stat.icon size={17} className={stat.color} />
+                  <div key={stat.label} className="glass-light rounded-2xl p-4 metric-tile">
+                    <div className={`w-8 h-8 rounded-xl ${stat.bg} flex items-center justify-center mb-3`}>
+                      <stat.icon size={15} className={stat.color} />
                     </div>
-                    <div className="text-2xl font-display font-700 text-white">{stat.value}</div>
-                    <div className="text-xs text-slate-400 mt-1">{stat.label}</div>
+                    <div className="text-xl font-display font-700 text-white">{stat.value}</div>
+                    <div className="text-xs text-slate-400 mt-0.5">{stat.label}</div>
                   </div>
                 ))}
               </div>
 
-              <div className="glass-light rounded-2xl p-5 mb-4">
+              <div className="glass-light rounded-2xl p-4 mb-4">
                 <div className="flex items-center justify-between mb-3">
-                  <div className="text-base font-medium text-slate-300">AI Call Activity</div>
+                  <div className="text-sm font-medium text-slate-300">AI Call Activity</div>
                   <div className="flex items-center gap-1">
                     {[...Array(7)].map((_, i) => (
                       <span key={i} className="wave-bar" />
@@ -164,13 +166,13 @@ export default function Hero() {
                 </div>
                 <div className="space-y-2">
                   {[
-                    { caller: 'Dr. Sarah Johnson', action: 'Appointment booked', time: '2m ago' },
-                    { caller: 'Luxury Salon', action: 'Lead captured', time: '5m ago' },
-                    { caller: 'AutoWorld Cars', action: 'Transferred to agent', time: '8m ago' },
+                    { caller: 'Dr. Sarah Johnson', action: 'Appointment booked', time: '2m ago', status: 'success' },
+                    { caller: 'Luxury Salon', action: 'Lead captured', time: '5m ago', status: 'success' },
+                    { caller: 'AutoWorld Cars', action: 'Transferred to agent', time: '8m ago', status: 'transfer' },
                   ].map((call, i) => (
                     <div key={i} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
                       <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-emerald-400" />
+                        <div className={`w-2 h-2 rounded-full ${call.status === 'success' ? 'bg-emerald-400' : 'bg-cyan-400'}`} />
                         <div>
                           <div className="text-xs font-medium text-slate-300">{call.caller}</div>
                           <div className="text-xs text-slate-500">{call.action}</div>
@@ -182,22 +184,22 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="glass-light rounded-2xl p-5">
+              <div className="glass-light rounded-2xl p-4">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-7 h-7 rounded-full bg-violet-500/20 flex items-center justify-center">
                     <MessageSquare size={14} className="text-violet-400" />
                   </div>
-                  <span className="text-base font-medium text-slate-300">Live Chat</span>
+                  <span className="text-sm font-medium text-slate-300">Live Chat</span>
                 </div>
                 <div className="space-y-2">
                   <div className="flex justify-end">
-                    <div className="bg-cyan-500/20 rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm text-cyan-200 max-w-[75%]">
+                    <div className="bg-cyan-500/20 rounded-2xl text-gray-600 rounded-tr-sm px-3 py-2 text-xs text-cyan-200 max-w-[75%]">
                       Do you have any Saturday appointments available?
                     </div>
                   </div>
                   <div className="flex justify-start">
-                    <div className="glass rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm text-slate-300 max-w-[75%]">
-                      Yes! I can book you for this Saturday at 10am or 2pm. Which works better?
+                    <div className="glass rounded-2xl rounded-tl-sm px-3 py-2 text-xs text-slate-300 max-w-[75%]">
+                      Yes! I can book you for this Saturday at 10am or 2pm. Which works better? 🗓️
                     </div>
                   </div>
                 </div>

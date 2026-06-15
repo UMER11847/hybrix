@@ -69,7 +69,7 @@ export default function Industries() {
 
         <div data-animate className="mt-12 text-center">
           <p className="text-slate-500 text-sm mb-4">Don&apos;t see your industry?</p>
-          <a href="#demo" className="text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors underline underline-offset-4">
+          <a href="#demo" className="text-cyan-300 text-[#AB90F9] hover:text-cyan-300 text-sm font-medium transition-colors underline underline-offset-4">
             Talk to us — we build custom AI solutions for any service business
           </a>
         </div>

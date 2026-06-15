@@ -62,7 +62,7 @@ export default function HowItWorks() {
             <span className="gradient-text"> AI Going Live </span>
             in 48 Hours
           </h2>
-          <p className="text-lg text-slate-400 leading-relaxed">
+          <p className="text-lg text-slate-300 leading-relaxed">
             No technical knowledge required. We handle everything from setup to training. You just approve and launch.
           </p>
         </div>
