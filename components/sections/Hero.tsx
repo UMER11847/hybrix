@@ -48,7 +48,7 @@ export default function Hero() {
   )
 
   return (
-    <SectionZone zone="hero" className="min-h-screen flex items-center overflow-hidden">
+    <SectionZone zone="hero" className="min-h-screen flex items-center justify-center overflow-hidden">
       <div ref={containerRef} className="max-w-[1280px] mx-auto px-6 lg:px-10 py-24 sm:py-28 pt-36 sm:pt-40 w-full">
         <div ref={contentRef} className="grid lg:grid-cols-2 gap-16 xl:gap-24 items-center">
           {/* Left Content */}
