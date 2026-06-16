@@ -4,7 +4,6 @@ import Image from 'next/image'
 import clsx from 'clsx'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Zap } from 'lucide-react'
-import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import CalendlyButton from './CalendlyButton'
 
@@ -79,6 +78,7 @@ export default function Navbar() {
               priority
               className="w-full h-full object-contain"
             />
+          </div>  
           </div>
           <span className="font-display font-700 text-2xl tracking-tight text-white">
             Hybrix<span className="gradient-text">AI</span>
