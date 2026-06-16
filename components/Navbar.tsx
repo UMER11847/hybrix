@@ -1,8 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import clsx from 'clsx'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import CalendlyButton from './CalendlyButton'
 
@@ -68,6 +70,15 @@ export default function Navbar() {
         <a href="#" className="flex items-center gap-2 group">
           <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center glow-button transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
             <Zap size={18} className="text-white" fill="white" />
+          <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/8 flex items-center justify-center glow-blue">
+            <Image
+              src="/logo2.svg"
+              alt="HybrixAI logo"
+              width={32}
+              height={32}
+              priority
+              className="w-full h-full object-contain"
+            />
           </div>
           <span className="font-display font-700 text-2xl tracking-tight text-white">
             Hybrix<span className="gradient-text">AI</span>
