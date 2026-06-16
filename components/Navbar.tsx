@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, Zap } from 'lucide-react'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import CalendlyButton from './CalendlyButton'
@@ -22,7 +24,7 @@ function linkClassName(isActive: boolean, mobile = false) {
     'font-medium transition-colors duration-200',
     mobile ? 'block text-base py-2' : 'text-sm',
     isActive
-      ? 'text-emerald-400'
+      ? 'text-purple-400'
       : mobile
         ? 'text-slate-300 hover:text-white'
         : 'text-slate-400 hover:text-white'
@@ -60,12 +62,14 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled
-        ? 'bg-primary-90 backdrop-blur-xl border-b border-white/5 py-3'
+        ? 'bg-primary-90/80 backdrop-blur-2xl border-b border-cyan-500/10 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
         : 'bg-transparent py-5'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center glow-button transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+            <Zap size={18} className="text-white" fill="white" />
           <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/8 flex items-center justify-center glow-blue">
             <Image
               src="/logo2.svg"
@@ -76,13 +80,13 @@ export default function Navbar() {
               className="w-full h-full object-contain"
             />
           </div>
-          <span className="font-display font-700 text-xl tracking-tight text-white">
-            Hybrix<span className="gradient-text-blue">AI</span>
+          <span className="font-display font-700 text-2xl tracking-tight text-white">
+            Hybrix<span className="gradient-text">AI</span>
           </span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.slice(1)
             return (
@@ -94,7 +98,11 @@ export default function Navbar() {
               >
                 {link.label}
                 {isActive && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-emerald-400" />
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
                 )}
               </a>
             )
@@ -102,7 +110,7 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <ThemeToggle />
           <a
             href="#form"
@@ -111,13 +119,13 @@ export default function Navbar() {
             Sign In
           </a>
           <CalendlyButton
-            className="text-sm font-semibold px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white transition-all duration-200 glow-button"
+            className="btn-shine text-sm font-semibold px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white transition-all duration-200 glow-button hover:-translate-y-0.5"
           >
             Book Free Consultation
           </CalendlyButton>
         </div>
 
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <ThemeToggle />
           <button
             className="text-white p-2"
@@ -129,20 +137,31 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-secondary-98 backdrop-blur-xl border-t border-white/5 px-6 py-6 space-y-4">
-          {navLinks.map((link) => {
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:hidden overflow-hidden bg-secondary-98 backdrop-blur-xl border-t border-white/5"
+          >
+            <div className="px-6 py-6 space-y-4">
+          {navLinks.map((link, i) => {
             const isActive = activeSection === link.href.slice(1)
             return (
-              <a
+              <motion.a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 aria-current={isActive ? 'true' : undefined}
                 className={linkClassName(isActive, true)}
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
               >
                 {link.label}
-              </a>
+              </motion.a>
             )
           })}
           <div className="pt-4 border-t border-white/5 space-y-3">
@@ -154,14 +173,16 @@ export default function Navbar() {
               Sign In
             </a>
             <CalendlyButton
-              className="block text-center font-semibold px-5 py-3 rounded-xl bg-emerald-500 text-white"
+              className="block text-center font-semibold px-5 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white"
               onClick={() => setMenuOpen(false)}
             >
               Book Free Demo
             </CalendlyButton>
           </div>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }
