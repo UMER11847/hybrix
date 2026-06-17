@@ -44,8 +44,8 @@ export default function Solutions() {
           {solutions.map((solution, i) => (
             <Card3D key={i}>
               <div data-animate className="glass-panel-3d module-card rounded-2xl p-8 h-full group">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-600/20 to-emerald-600/20 flex items-center justify-center mb-6 group-hover:from-cyan-600/30 group-hover:to-emerald-600/30 transition-colors duration-300">
-                  <solution.icon size={24} className="text-cyan-400" />
+                <div className="w-12 h-12 rounded-xl bg-[rgb(91_225_176_/_54%)] hover:bg-[rgb(91_225_176_/_70%)] flex items-center justify-center mb-6 transition-colors duration-300">
+                  <solution.icon size={24} className="text-black" />
                 </div>
                 <h3 className="text-xl font-display font-700 text-white mb-4">{solution.title}</h3>
                 <p className="text-slate-400 leading-relaxed">{solution.desc}</p>
@@ -59,7 +59,7 @@ export default function Solutions() {
             <div className="text-xl font-display font-700 text-white mb-1">Ready to put AI to work?</div>
             <div className="text-slate-400 text-sm">Setup takes less than 48 hours. No technical knowledge required.</div>
           </div>
-          <CalendlyButton className="btn-shine flex-shrink-0 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-semibold text-sm transition-all duration-200 glow-button">
+          <CalendlyButton className="btn-shine flex-shrink-0 px-7 py-3.5 rounded-2xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white font-semibold text-sm transition-all duration-200 glow-button">
             Book Free Consultation
           </CalendlyButton>
         </div>

@@ -89,7 +89,7 @@ export default function Hero() {
             </div>
 
             <div data-hero="cta" className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <CalendlyButton className="w-full sm:w-auto btn-shine inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-semibold text-lg transition-all duration-200 glow-button group hover:-translate-y-0.5">
+              <CalendlyButton className="w-full sm:w-auto btn-shine inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white font-semibold text-lg transition-all duration-200 glow-button group hover:-translate-y-0.5">
                 Book Free Demo
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </CalendlyButton>

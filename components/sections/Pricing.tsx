@@ -30,7 +30,7 @@ const plans = [
     popular: false,
     accent: 'border-purple-500/20',
     ctaStyle:
-      'bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 text-white border border-purple-500/30',
+      'bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white',
   },
   {
     name: 'Growth',
@@ -56,7 +56,7 @@ const plans = [
     popular: true,
     accent: 'border-purple-500/50',
     ctaStyle:
-      'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white glow-button',
+      'bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white glow-button',
   },
   {
     name: 'Pro',
@@ -82,7 +82,7 @@ const plans = [
     popular: false,
     accent: 'border-purple-500/20',
     ctaStyle:
-      'bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 text-white border border-purple-500/30',
+      'bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white',
   },
   {
     name: 'Enterprise',
@@ -108,7 +108,7 @@ const plans = [
     popular: false,
     accent: 'border-purple-500/20',
     ctaStyle:
-      'bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 text-white border border-purple-500/30',
+      'bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white',
   },
 ]
 
@@ -232,7 +232,7 @@ export default function Pricing() {
           </p>
           <a
             href="#demo"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold transition-all duration-200 glow-button"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white font-semibold transition-all duration-200 glow-button"
           >
             Book Free Strategy Call
             <ArrowRight size={16} />
