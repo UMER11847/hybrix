@@ -20,7 +20,6 @@ export default function AnimateInView({
 }: AnimateInViewProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-60px 0px' })
-
   return (
     <motion.div
       ref={ref}
