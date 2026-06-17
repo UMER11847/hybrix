@@ -1,5 +1,7 @@
 'use client'
+
 import { useState } from 'react'
+import Image from 'next/image'
 
 import {
   Shield,
@@ -18,7 +20,9 @@ import { FaXTwitter } from 'react-icons/fa6'
 
 import CalendlyButton from '@/components/CalendlyButton'
 import SectionZone from '@/components/SectionZone'
-import { CALENDLY_URL } from '@/lib/constants'// --- TRUST SECTION ---
+import { CALENDLY_URL } from '@/lib/constants'
+
+// --- TRUST SECTION ---
 const trustItems = [
   { icon: Shield, title: 'Enterprise-Grade Security', desc: 'SOC 2 compliant infrastructure. Your customer data is always encrypted and protected.' },
   { icon: Clock, title: 'Setup in 48 Hours', desc: 'Our team handles everything. You\'re live and automated within 2 business days.' },
@@ -127,7 +131,7 @@ export function About() {
 
             <a
               href="#demo"
-              className="flex items-center justify-between px-7 py-5 rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-semibold hover:opacity-90 transition-opacity group"
+              className="flex items-center justify-between px-7 py-5 rounded-3xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white font-semibold transition-opacity group"
             >
               <div>
                 <div className="text-base font-display font-700">Work With Us</div>
@@ -203,7 +207,7 @@ export function FAQ() {
             <a href="mailto:hybrixai@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass border border-white/10 text-slate-300 hover:text-white text-sm transition-colors">
               <Mail size={15} /> Email Us
             </a>
-            <a href="https://wa.me/1234567890" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-green-500/20 border border-green-500/20 text-green-300 hover:text-green-200 text-sm transition-colors">
+            <a href="https://wa.me/1234567890" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[rgb(52_211_153)]/20 border border-[rgb(52_211_153)]/20 text-[rgb(52_211_153)] hover:text-[rgb(45_200_140)] text-sm transition-colors">
               <MessageSquare size={15} /> WhatsApp Chat
             </a>
           </div>
@@ -232,16 +236,16 @@ export function Footer() {
               </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <CalendlyButton
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold transition-all duration-200 glow-button"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white font-semibold transition-all duration-200 glow-button"
                 >
                   Book Free Demo
                   <ArrowRight size={18} />
                 </CalendlyButton>
                 <a
                   href="https://wa.me/1234567890"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl glass border border-white/10 hover:border-green-500/40 text-white font-semibold transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl glass border border-white/10 hover:border-[rgb(52_211_153)]/40 text-white font-semibold transition-all duration-200"
                 >
-                  <MessageSquare size={17} className="text-green-400" />
+                  <MessageSquare size={17} className="text-[rgb(52_211_153)]" />
                   Chat on WhatsApp
                 </a>
               </div>
@@ -255,9 +259,24 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
+              {/* <div className="w-8 h-8 rounded-lg bg-[rgb(52_211_153)] flex items-center justify-center">
                 <Zap size={15} className="text-white" fill="white" />
-              </div>
+              </div> */}
+              <a href="#" className="flex items-center gap-2 group">
+                        <div className="w-9 h-9 rounded-lg bg-[rgb(52_211_153)] flex items-center justify-center glow-button transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                          <Zap size={18} className="text-white" fill="white" style={{display: 'none'}}  />
+                        <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/8 flex items-center justify-center glow-blue">
+                          <Image
+                            src="/logo2.svg"
+                            alt="HybrixAI logo"
+                            width={32}
+                            height={32}
+                            priority
+                            className="w-full h-full object-contain"
+                          />
+                        </div>  
+                        </div>
+              </a>
               <span className="font-display font-700 text-xl text-white">Hybrix<span className="gradient-text">AI</span></span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed mb-6">
@@ -340,7 +359,7 @@ export function WhatsAppFloat() {
       href="https://wa.me/1234567890"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-2xl bg-green-500 hover:bg-green-400 flex items-center justify-center shadow-[0_8px_30px_rgba(34,197,94,0.4)] transition-all duration-200 whatsapp-btn"
+      className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-2xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] flex items-center justify-center shadow-[0_8px_30px_rgba(52,211,153,0.4)] transition-all duration-200 whatsapp-btn"
       aria-label="Chat on WhatsApp"
     >
       <svg viewBox="0 0 24 24" fill="white" width="24" height="24">

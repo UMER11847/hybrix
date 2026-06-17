@@ -143,7 +143,7 @@ export default function EmailForm() {
           <button
             type="submit"
             disabled={status === 'sending'}
-            className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold text-sm transition-all duration-200 glow-button mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full py-4 rounded-xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white font-semibold text-sm transition-all duration-200 glow-button mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === 'sending' ? 'Sending...' : 'Request a Demo →'}
           </button>

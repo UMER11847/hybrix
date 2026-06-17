@@ -4,7 +4,6 @@ import Image from 'next/image'
 import clsx from 'clsx'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Zap } from 'lucide-react'
-import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import CalendlyButton from './CalendlyButton'
 
@@ -68,8 +67,8 @@ export default function Navbar() {
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center glow-button transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-            <Zap size={18} className="text-white" fill="white" />
+          <div className="w-9 h-9 rounded-lg bg-[rgb(52_211_153)] flex items-center justify-center glow-button transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+            <Zap size={18} className="text-white" fill="white" style={{display: 'none'}} />
           <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/8 flex items-center justify-center glow-blue">
             <Image
               src="/logo2.svg"
@@ -79,6 +78,7 @@ export default function Navbar() {
               priority
               className="w-full h-full object-contain"
             />
+          </div>  
           </div>
           <span className="font-display font-700 text-2xl tracking-tight text-white">
             Hybrix<span className="gradient-text">AI</span>
@@ -100,7 +100,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-[rgb(52_211_153)]"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -119,7 +119,7 @@ export default function Navbar() {
             Sign In
           </a>
           <CalendlyButton
-            className="btn-shine text-sm font-semibold px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white transition-all duration-200 glow-button hover:-translate-y-0.5"
+            className="btn-shine text-sm font-semibold px-6 py-3 rounded-xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white transition-all duration-200 glow-button hover:-translate-y-0.5"
           >
             Book Free Consultation
           </CalendlyButton>
@@ -173,7 +173,7 @@ export default function Navbar() {
               Sign In
             </a>
             <CalendlyButton
-              className="block text-center font-semibold px-5 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+              className="block text-center font-semibold px-5 py-3 rounded-xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white"
               onClick={() => setMenuOpen(false)}
             >
               Book Free Demo

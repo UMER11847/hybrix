@@ -109,7 +109,7 @@ export default function HowItWorks() {
             <div className="text-2xl font-display font-700 text-white mb-2">Ready in 48 hours. Results from day one.</div>
             <p className="text-slate-400">No long contracts. No technical headaches. Just AI that works.</p>
           </div>
-          <a href="#demo" className="btn-shine flex-shrink-0 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-semibold text-sm transition-all duration-200 glow-button">
+          <a href="#demo" className="btn-shine flex-shrink-0 px-7 py-3.5 rounded-2xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white font-semibold text-sm transition-all duration-200 glow-button">
             Start the Process →
           </a>
         </div>

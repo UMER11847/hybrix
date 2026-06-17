@@ -42,7 +42,7 @@ export default function DemoSection() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <CalendlyButton
-                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold transition-all duration-200 glow-button group"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-[rgb(52_211_153)] hover:bg-[rgb(45_200_140)] text-white font-semibold transition-all duration-200 glow-button group"
                   >
                     Book Free Demo
                     <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />

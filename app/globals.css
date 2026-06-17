@@ -163,7 +163,7 @@ svg {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #a78bfa 0%, #ec4899 25%, #8b5cf6 50%, #3b82f6 75%, #10b981 100%);
+  background: linear-gradient(135deg, #34d399 0%, #10b981 25%, #34d399 50%, #059669 75%, #34d399 100%);
   background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -177,7 +177,7 @@ svg {
 }
 
 .gradient-text-blue {
-  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #3b82f6 100%);
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -216,26 +216,26 @@ svg {
 
 /* Glow effects */
 .glow-blue {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.3), 0 0 80px rgba(236, 72, 153, 0.2);
+  box-shadow: 0 0 40px rgba(52, 211, 153, 0.3), 0 0 80px rgba(52, 211, 153, 0.2);
 }
 
 .glow-button {
-  box-shadow: 0 0 25px rgba(139, 92, 246, 0.5), 0 0 50px rgba(236, 72, 153, 0.3);
+  box-shadow: 0 0 25px rgba(52, 211, 153, 0.5), 0 0 50px rgba(52, 211, 153, 0.3);
   transition: all 0.3s ease;
 }
 
 .glow-button:hover {
-  box-shadow: 0 0 35px rgba(139, 92, 246, 0.7), 0 0 70px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 0 35px rgba(52, 211, 153, 0.7), 0 0 70px rgba(52, 211, 153, 0.4);
   transform: translateY(-2px);
 }
 
 .glow-card {
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(236, 72, 153, 0.1);
+  box-shadow: 0 0 30px rgba(52, 211, 153, 0.15), 0 0 60px rgba(52, 211, 153, 0.1);
   transition: all 0.3s ease;
 }
 
 .glow-card:hover {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.25), 0 0 80px rgba(236, 72, 153, 0.15);
+  box-shadow: 0 0 40px rgba(52, 211, 153, 0.25), 0 0 80px rgba(52, 211, 153, 0.15);
   transform: translateY(-4px);
 }
 
