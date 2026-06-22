@@ -1,0 +1,82 @@
+{
+  "company": {
+    "name": "HybrixAI",
+    "website": "https://hybrixai.com/",
+    "contact": {
+      "email": "hybrixai@gmail.com",
+      "channels": ["Email", "WhatsApp Chat"]
+    },
+    "mission": "Provide 24/7 AI-powered call assistants and chatbots to automate operations, capture leads, and book appointments for service businesses without human overhead.",
+    "stats": {
+      "businesses_automated": "500+",
+      "calls_handled": "2M+",
+      "avg_setup_time": "48 hours",
+      "average_missed_calls_industry": "62%"
+    }
+  },
+  "core_products": {
+    "ai_chatbot": "Automates conversations 24/7 across websites, WhatsApp, and messaging platforms to qualify leads and answer FAQs in under 1 second.",
+    "ai_call_agents": "Human-like 24/7 phone agents answering inquiries, qualifying leads, handling simultaneous calls, and transferring urgent cases to staff.",
+    "appointment_booking": "Intelligent automated scheduling, confirmation, rescheduling, and calendar syncing with zero friction.",
+    "lead_generation": "Automatically identifies, scores, nurtures, and captures high-value visitor data directly into CRMs.",
+    "social_media_automation": "AI-generated content creation, scheduling, and multi-platform posting for consistent brand presence.",
+    "generative_marketing": "Creates high-converting ad copies, emails, landing pages, and marketing assets."
+  },
+  "pricing_packages": {
+    "starter": {
+      "cost": "$249/mo",
+      "setup": "$499",
+      "features": ["AI Chatbot", "Appointment Booking", "Lead Capture Forms", "Basic CRM", "Monthly Reports"],
+      "best_for": ["Dentists", "Clinics", "Realtors", "Small Businesses"]
+    },
+    "growth": {
+      "cost": "$599/mo",
+      "setup": "$1,499",
+      "features": ["AI Chatbot", "Appointment Automation", "AI Lead Generation", "Social Media Automation", "CRM Integration", "Monthly Optimization"],
+      "best_for": ["Real Estate Agencies", "Law Firms", "Insurance Agencies", "Marketing Agencies"]
+    },
+    "pro": {
+      "cost": "$1,499/mo",
+      "setup": "$3,499",
+      "features": ["AI Chatbot", "AI Call Agent", "Lead Gen Automation", "Social Media Automation", "Generative AI Marketing", "CRM Workflow Automation", "Priority Support"],
+      "best_for": ["Multi-Location Businesses", "Healthcare Groups", "Established Service Companies"]
+    },
+    "enterprise": {
+      "cost": "Custom from $2,499/mo",
+      "setup": "From $4,999",
+      "features": ["Everything in Pro", "Custom AI Agents", "Multiple Integrations", "Advanced Analytics", "Dedicated Manager", "Custom Workflows"],
+      "best_for": ["Franchises", "Call Centers", "Large Healthcare Networks"]
+    },
+    "individual_services_monthly_mgmt": {
+      "chatbot_only": {"setup": "$299", "monthly": "$99"},
+      "appointment_only": {"setup": "$349", "monthly": "$129"},
+      "call_handling_only": {"setup": "$499", "monthly": "$199"},
+      "lead_generation_only": {"setup": "$999", "monthly": "$499+"},
+      "social_media_only": {"setup": "$499", "monthly": "$299+"},
+      "marketing_assets_only": {"setup": "$999+", "monthly": "$499+"}
+    }
+  },
+  "industries_served": {
+    "healthcare": "Handles 24/7 bookings, test results inquiries, sends reminders to drop no-shows by 45%, escalates urgent cases.",
+    "real_estate": "Qualifies buyer budgets/property types instantly 24/7, alerts agents immediately regarding hot leads.",
+    "beauty_salons": "Automates bookings when stylists are busy, cuts appointment no-shows by 60% via automated reminders.",
+    "hospitality_restaurants": "Handles reservations during rush hours, answers menu items, manages waitlists.",
+    "automotive_dealerships": "Pre-qualifies auto inventory/pricing inquiries, schedules test drives, routes serious buyers to salespeople.",
+    "legal_law_firms": "24/7 new client intake, collects initial case data, screens practice areas, schedules consultations."
+  },
+  "process_and_delivery": {
+    "step_01_discovery": "30-min discovery call to understand workflows, integrations, and ideal response structures.",
+    "step_02_training": "Configuration of custom voice, business rules, FAQ inputs, CRM/calendar mapping.",
+    "step_03_deployment": "Goes live in 48 hours with full dashboard analytics, real-time tracking, and human override capabilities."
+  },
+  "security_and_integrations": {
+    "security": "Enterprise-grade SOC 2 compliant infrastructure, full end-to-end data encryption.",
+    "uptime_sla": "99.9% availability backed by redundant cloud infrastructure.",
+    "supported_platforms": ["HubSpot", "Salesforce", "Google Calendar", "WhatsApp Business", "Calendly", "Twilio", "Zoho CRM", "Slack"],
+    "capabilities": ["Multi-language support", "Simultaneous infinite calls", "Live human-takeover override"]
+  },
+  "value_proposition": {
+    "benefits": ["60% staff cost reduction", "3x more lead capture", "Instant response under 1 sec", "Zero missed calls"],
+    "offers": "Free 30-Minute customized live demo, custom industry layout walkthrough, and tailored ROI calculations."
+  }
+}

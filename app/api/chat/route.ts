@@ -1,93 +1,232 @@
-import { NextResponse } from 'next/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import { NextResponse } from "next/server";
+import { openrouter } from "@/lib/openrouter";
+import fs from "fs";
+import path from "path";
 
-// Initialize Gemini client if API key is present
-const apiKey = process.env.GEMINI_API_KEY
-const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null
+// Cache the knowledge data at module level (loads once, reused for all requests)
+let cachedBusinessData: string | null = null;
 
-// Simple rule-based chatbot responses as a fallback
-function getFallbackResponse(userMessage: string): string {
-  const msg = userMessage.toLowerCase()
-
-  if (msg.includes('price') || msg.includes('pricing') || msg.includes('cost') || msg.includes('plan') || msg.includes('package')) {
-    return `We offer several tailored packages:
-• **Starter ($249/mo):** AI chatbot, lead capture forms, and basic CRM integrations. Best for local clinics and small businesses.
-• **Growth ($599/mo):** AI chatbot + Lead generation automation and social media posting.
-• **Pro ($1,499/mo):** Full AI employee system including AI call agents, email campaigns, and custom workflows.
-• **Enterprise ($2,499/mo):** Custom integrations, dedicated manager, and enterprise-grade automation.
-
-Would you like to book a demo to find which plan fits your business best?`
+async function getBusinessData(): Promise<string> {
+  // Return cached data if already loaded
+  if (cachedBusinessData) {
+    return cachedBusinessData;
   }
 
-  if (msg.includes('book') || msg.includes('appointment') || msg.includes('schedule') || msg.includes('demo') || msg.includes('consultation')) {
-    return `I can definitely help you with that! You can click the "Book Free Demo" button on the screen to schedule a direct 30-minute consultation with our team. 
-
-Alternatively, drop your contact details in the request form and we'll reach out to schedule a convenient time for you.`
+  const knowledgePath = path.join(process.cwd(), "lib", "knowledge", "company.json");
+  
+  try {
+    const rawData = await fs.promises.readFile(knowledgePath, "utf-8");
+    cachedBusinessData = JSON.stringify(JSON.parse(rawData), null, 2);
+    return cachedBusinessData;
+  } catch (fsError) {
+    console.error("Failed to read knowledge base file:", fsError);
+    return "No company background data available.";
   }
-
-  if (msg.includes('service') || msg.includes('chatbot') || msg.includes('what do you do') || msg.includes('call') || msg.includes('phone') || msg.includes('help')) {
-    return `HybrixAI helps businesses automate customer communication and operations. Our main services include:
-1. **AI Call Agents:** Natural, warm-sounding voice assistants that answer client calls 24/7, book appointments, and transfer hot leads.
-2. **AI Chatbots:** Intelligent web widgets for 24/7 client support and qualification.
-3. **AI Lead Generation:** Automated forms and workflows to capture, nurture, and score leads.
-4. **Social Media & Content Automation:** Generative tools to schedule, publish, and scale marketing content automatically.
-
-Is there a specific area you are looking to automate today?`
-  }
-
-  if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
-    return `Hello! How can I help you today? Ask me about our AI services, pricing packages, how setup works, or how to book a demo.`
-  }
-
-  return `Thanks for your message! I'm the HybrixAI receptionist assistant. 
-
-Our AI call assistants and chatbots are designed to answer customer queries instantly, book appointments, and capture leads 24/7 so your team never misses another opportunity. 
-
-Would you like to learn more about how we can set this up for your business within 48 hours, or would you like to schedule a free demo call?`
 }
 
-export async function POST(request: Request) {
+// Detect if user wants to book an appointment
+function isAppointmentRequest(userMessage: string): boolean {
+  const appointmentKeywords = [
+    "book",
+    "appointment",
+    "schedule",
+    "meeting",
+    "demo",
+    "call",
+    "consultation",
+    "session",
+  ];
+  const lowerMessage = userMessage.toLowerCase();
+  return appointmentKeywords.some(keyword => lowerMessage.includes(keyword));
+}
+
+// Save appointment to JSON file
+async function saveAppointment(
+  userName: string,
+  userEmail: string,
+  appointmentDate: string,
+  appointmentTime: string
+): Promise<void> {
+  const appointmentsPath = path.join(process.cwd(), "public", "appointments.json");
+  
   try {
-    const body = await request.json()
-    const messages = body.messages || []
-
-    if (messages.length === 0) {
-      return NextResponse.json({ error: 'No messages provided' }, { status: 400 })
+    let appointments = [];
+    
+    // Read existing appointments if file exists
+    try {
+      const existingData = await fs.promises.readFile(appointmentsPath, "utf-8");
+      appointments = JSON.parse(existingData);
+    } catch {
+      // File doesn't exist yet, start with empty array
+      appointments = [];
     }
-
-    const lastUserMessage = messages[messages.length - 1]?.text || ''
-
-    // If Gemini is configured, use it
-    if (genAI) {
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
-      
-      // Construct prompt with context
-      const systemContext = `You are a helpful, professional, and friendly AI representative for HybrixAI. 
-HybrixAI builds AI call assistants and chatbots for service businesses (clinics, realtors, law firms, salons, car dealerships).
-Main features: 24/7 availability, natural-sounding voices, CRM integration, appointment booking, lead generation, 48-hour setup.
-Pricing: Starter ($249/mo), Growth ($599/mo), Pro ($1,499/mo), Enterprise ($2,499/mo).
-
-Keep your responses conversational, concise, professional, and focused on helping the business owner understand how AI automation can save them time and capture more clients. Encourage them to book a free demo.`
-      
-      const prompt = `${systemContext}\n\nUser: ${lastUserMessage}\nAI:`
-      const result = await model.generateContent(prompt)
-      const response = await result.response
-      const responseText = response.text()
-
-      return NextResponse.json({ text: responseText })
-    }
-
-    // Fallback if no Gemini API key is configured
-    // Simulate network delay for a more natural feel
-    await new Promise((resolve) => setTimeout(resolve, 800))
-    const reply = getFallbackResponse(lastUserMessage)
-
-    return NextResponse.json({ text: reply })
+    
+    // Add new appointment
+    appointments.push({
+      id: Date.now(),
+      name: userName,
+      email: userEmail,
+      date: appointmentDate,
+      time: appointmentTime,
+      bookedAt: new Date().toISOString(),
+    });
+    
+    // Write back to file
+    await fs.promises.writeFile(appointmentsPath, JSON.stringify(appointments, null, 2));
   } catch (error) {
-    console.error('Chat API Error:', error)
+    console.error("Failed to save appointment:", error);
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    // 1. FIRST: Parse the request body
+    const body = await req.json();
+    const { messages } = body;
+
+    // Safety check: make sure messages array exists
+    if (!messages || !Array.isArray(messages)) {
+      return NextResponse.json({ text: "Invalid message format received." }, { status: 400 });
+    }
+
+    // Get the last user message
+    const lastUserMessage = messages[messages.length - 1]?.content || "";
+
+    // Check if this is an appointment request
+    if (isAppointmentRequest(lastUserMessage)) {
+      // Extract information from the message using a simple approach
+      const appointmentPrompt = {
+        role: "system" as const,
+        content: `Extract the following information from the user's appointment request:
+1. User's name (if provided, otherwise ask)
+2. User's email (if provided, otherwise ask)
+3. Preferred date (in YYYY-MM-DD format)
+4. Preferred time (in HH:MM format)
+
+Respond in JSON format like:
+{"name": "John Doe", "email": "john@example.com", "date": "2024-12-25", "time": "14:00", "needsInfo": false, "missingFields": []}
+
+If any information is missing, set needsInfo to true and list missing fields.`,
+      };
+
+      const extractionMessages = [
+        appointmentPrompt,
+        { role: "user" as const, content: lastUserMessage },
+      ];
+
+      const extractionResult = await openrouter.chat.send({
+        chatRequest: {
+          model: "openai/gpt-oss-120b:free",
+          messages: extractionMessages as any,
+          maxTokens: 200,
+        },
+      });
+
+      const extractedText =
+        extractionResult.choices?.[0]?.message?.content || "{}";
+
+      try {
+        const appointmentData = JSON.parse(extractedText);
+
+        if (
+          appointmentData.name &&
+          appointmentData.email &&
+          appointmentData.date &&
+          appointmentData.time &&
+          !appointmentData.needsInfo
+        ) {
+          // Save the appointment
+          await saveAppointment(
+            appointmentData.name,
+            appointmentData.email,
+            appointmentData.date,
+            appointmentData.time
+          );
+
+          return NextResponse.json({
+            text: `Great! I've booked your appointment for ${appointmentData.date} at ${appointmentData.time}. A confirmation email will be sent to ${appointmentData.email}. We look forward to speaking with you!`,
+          });
+        } else {
+          // Need more information
+          return NextResponse.json({
+            text: `To book your appointment, I'll need a few details:\n- Your full name\n- Your email address\n- Preferred date (e.g., December 25, 2024)\n- Preferred time (e.g., 2:00 PM)\n\nPlease provide these details and I'll confirm your appointment.`,
+          });
+        }
+      } catch (parseError) {
+        console.error("Failed to parse appointment data:", parseError);
+      }
+    }
+
+    // 2. Get cached business data (fast on subsequent calls)
+    const businessData = await getBusinessData();
+
+    // 3. Define the System Prompt
+    const systemPrompt = {
+      role: "system" as const,
+      content: `You are a conversational AI assistant for HybrixAI. Answer questions naturally and concisely.
+
+Company Knowledge Base:
+===
+${businessData}
+===
+
+Response Guidelines:
+- Keep replies SHORT and conversational (2-3 sentences max).
+- Answer ONLY what was asked - avoid long lists, tables, or comprehensive overviews unless specifically requested.
+- Use simple language, not complex formatting or markdown tables.
+- If you don't know something or it's not in the knowledge base, say "I'd recommend speaking with our sales team for that."
+- Be helpful, professional, and friendly.`,
+    };
+
+    // 4. Slice the array to only keep the last 6 messages
+    const recentMessages = messages.slice(-6);
+
+    // Clean and format the recent history array for OpenRouter's validation rules
+    const formattedHistory = recentMessages.map((msg: any) => {
+      let matchedRole: "user" | "assistant" | "system" = "user";
+
+      const incomingRole = String(msg.role).toLowerCase();
+      if (incomingRole === "system" || incomingRole === "developer") {
+        matchedRole = "system";
+      } else if (
+        incomingRole === "assistant" ||
+        incomingRole === "bot" ||
+        incomingRole === "chatbot"
+      ) {
+        matchedRole = "assistant";
+      } else {
+        matchedRole = "user";
+      }
+
+      return {
+        role: matchedRole as "user" | "assistant" | "system",
+        content: String(msg.content || ""),
+      };
+    });
+
+    // Combine system instructions with recent history
+    const fullConversation = [systemPrompt, ...formattedHistory] as const;
+
+    // 5. Send the structured history array to OpenRouter
+    const completion = await openrouter.chat.send({
+      chatRequest: {
+        model: "openai/gpt-oss-120b:free",
+        messages: fullConversation as any,
+        maxTokens: 250,
+      },
+    });
+
+    // 6. Return the response text back to your LiveDemo component
+    const aiResponse =
+      completion.choices?.[0]?.message?.content ||
+      "Sorry, I couldn't formulate a proper response at the moment.";
+
+    return NextResponse.json({ text: aiResponse });
+  } catch (error) {
+    console.error("Error encountered in Chat Route:", error);
     return NextResponse.json(
-      { error: 'An error occurred while processing your request.' },
+      { text: "An error occurred while communicating with the server." },
       { status: 500 }
-    )
+    );
   }
 }

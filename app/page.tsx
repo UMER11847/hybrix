@@ -12,11 +12,13 @@ import CaseStudies from '@/components/sections/CaseStudies'
 import Pricing from '@/components/sections/Pricing'
 import DemoSection from '@/components/sections/DemoSection'
 import { Trust, About, FAQ, Footer, WhatsAppFloat } from '@/components/sections/MiscSections'
+import ChatBot from '@/components/ChatBot'
 
 export default function Home() {
   return (
     <HybrixExperience>
       <main>
+        
         <Navbar />
         <Hero />
         <PainPoints />

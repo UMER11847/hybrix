@@ -2,12 +2,13 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { MessageSquare, Send, Loader2 } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
 import SectionZone from '@/components/SectionZone'
 import { useScrollAnimation } from '@/components/animations/useScrollAnimation'
 
 type Message = {
-  role: 'user' | 'ai'
-  text: string
+  role: 'user' | 'assistant'
+  content: string
 }
 
 const GREETING =
@@ -30,10 +31,10 @@ export default function LiveDemo() {
     const text = input.trim()
     if (!text || isLoading) return
 
-    const userMessage: Message = { role: 'user', text }
-    const nextMessages = [...messages, userMessage]
+    const userMessage: Message = { role: 'user', content: text }
+    const updatedMessages = [...messages, userMessage]
 
-    setMessages(nextMessages)
+    setMessages(updatedMessages)
     setInput('')
     setError(null)
     setIsLoading(true)
@@ -42,7 +43,7 @@ export default function LiveDemo() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: nextMessages }),
+        body: JSON.stringify({ messages: updatedMessages }),
       })
 
       const data = await res.json()
@@ -51,7 +52,7 @@ export default function LiveDemo() {
         throw new Error(data.error || 'Something went wrong. Please try again.')
       }
 
-      setMessages((prev) => [...prev, { role: 'ai', text: data.text }])
+      setMessages((prev) => [...prev, { role: 'assistant', content: data.text }])
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to send message.'
       setError(message)
@@ -114,19 +115,25 @@ export default function LiveDemo() {
 
               {messages.map((msg, i) => (
                 <div key={i} className={`flex items-end gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  {msg.role === 'ai' && (
+                  {msg.role === 'assistant' && (
                     <div className="w-8 h-8 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
                       <MessageSquare size={14} className="text-emerald-400" />
                     </div>
                   )}
                   <div
-                    className={`rounded-2xl px-4 py-3 text-sm max-w-[75%] whitespace-pre-wrap ${
+                    className={`rounded-2xl px-4 py-3 text-sm max-w-[75%] ${
                       msg.role === 'user'
                         ? 'bg-emerald-500/20 text-emerald-100 rounded-br-sm'
                         : 'glass-light text-slate-300 rounded-bl-sm'
                     }`}
                   >
-                    {msg.text}
+                    {msg.role === 'assistant' ? (
+                      <div className="prose prose-sm max-w-none text-current">
+                        <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      </div>
+                    ) : (
+                      <div className="whitespace-pre-wrap">{msg.content}</div>
+                    )}
                   </div>
                 </div>
               ))}

@@ -7,12 +7,12 @@ import Card3D from '@/components/Card3D'
 import { useScrollAnimation } from '@/components/animations/useScrollAnimation'
 
 const benefits = [
-  { icon: DollarSign, title: 'Cut Staff Costs by 60%', description: 'Replace expensive call center staff and receptionists with AI that works 24/7 for a fraction of the cost.', stat: '60%', statLabel: 'Cost Reduction', color: 'text-black', bg: 'bg-[rgb(91_225_176_/_54%)]' },
-  { icon: TrendingUp, title: 'Never Miss Another Lead', description: 'Every inquiry gets captured, qualified, and routed. Midnight or Monday morning — your AI is always on.', stat: '3x', statLabel: 'More Leads', color: 'text-black', bg: 'bg-[rgb(91_225_176_/_54%)]' },
-  { icon: Zap, title: 'Instant Response Times', description: 'Customers get answers in under 1 second. No hold music, no waiting, no frustration.', stat: '<1s', statLabel: 'Response Time', color: 'text-black', bg: 'bg-[rgb(91_225_176_/_54%)]' },
-  { icon: Star, title: 'Better Customer Experience', description: 'Consistent, professional, and friendly responses every time. Your brand reputation is protected.', stat: '94%', statLabel: 'Satisfaction Rate', color: 'text-black', bg: 'bg-[rgb(91_225_176_/_54%)]' },
-  { icon: Users, title: 'Scale Without Hiring', description: 'Handle 100 calls simultaneously without adding a single employee. Your AI scales with you.', stat: '∞', statLabel: 'Simultaneous Calls', color: 'text-black', bg: 'bg-[rgb(91_225_176_/_54%)]' },
-  { icon: Clock, title: '24/7 Availability', description: 'Weekends, holidays, after-hours — your business never closes. Customers always reach someone.', stat: '24/7', statLabel: 'Always Available', color: 'text-black', bg: 'bg-[rgb(91_225_176_/_54%)]' },
+  { icon: DollarSign, title: 'Cut Staff Costs by 60%', description: 'Replace expensive call center staff and receptionists with AI that works 24/7 for a fraction of the cost.', stat: '60%', statLabel: 'Cost Reduction', color: 'text-white', bg: 'bg-[rgb(91_225_176_/_54%)]' },
+  { icon: TrendingUp, title: 'Never Miss Another Lead', description: 'Every inquiry gets captured, qualified, and routed. Midnight or Monday morning — your AI is always on.', stat: '3x', statLabel: 'More Leads', color: 'text-white', bg: 'bg-[rgb(91_225_176_/_54%)]' },
+  { icon: Zap, title: 'Instant Response Times', description: 'Customers get answers in under 1 second. No hold music, no waiting, no frustration.', stat: '<1s', statLabel: 'Response Time', color: 'text-white', bg: 'bg-[rgb(91_225_176_/_54%)]' },
+  { icon: Star, title: 'Better Customer Experience', description: 'Consistent, professional, and friendly responses every time. Your brand reputation is protected.', stat: '94%', statLabel: 'Satisfaction Rate', color: 'text-white', bg: 'bg-[rgb(91_225_176_/_54%)]' },
+  { icon: Users, title: 'Scale Without Hiring', description: 'Handle 100 calls simultaneously without adding a single employee. Your AI scales with you.', stat: '∞', statLabel: 'Simultaneous Calls', color: 'text-white', bg: 'bg-[rgb(91_225_176_/_54%)]' },
+  { icon: Clock, title: '24/7 Availability', description: 'Weekends, holidays, after-hours — your business never closes. Customers always reach someone.', stat: '24/7', statLabel: 'Always Available', color: 'text-white', bg: 'bg-[rgb(91_225_176_/_54%)]' },
 ]
 
 export default function Benefits() {
