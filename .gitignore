@@ -4,3 +4,5 @@ node_modules/
 dist/
 build/
 tsconfig.tsbuildinfo
+.env.local
+.env
