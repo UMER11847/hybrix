@@ -96,7 +96,7 @@ export default function Navbar() {
             const isRoute = link.href.startsWith('/')
             const isActive = isRoute ? pathname === link.href : activeSection === link.href.slice(1)
             const commonProps = {
-  'aria-current': isActive ? ('page' as const) : undefined,
+'aria-current': isActive ? ('page' as const) : undefined,
   className: clsx(linkClassName(isActive), 'relative'),
 }
 
