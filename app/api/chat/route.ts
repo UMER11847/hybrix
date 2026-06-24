@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { openrouter } from "@/lib/openrouter";
 import fs from "fs";
 import path from "path";
-
+export const runtime = "nodejs";
+export const maxDuration = 60;
 // Cache the knowledge data at module level (loads once, reused for all requests)
 let cachedBusinessData: string | null = null;
 
@@ -126,8 +127,17 @@ If any information is missing, set needsInfo to true and list missing fields.`,
         extractionResult.choices?.[0]?.message?.content || "{}";
 
       try {
-        const appointmentData = JSON.parse(extractedText);
+let appointmentData;
 
+try {
+  appointmentData = JSON.parse(extractedText);
+} catch (e) {
+  console.error("Invalid JSON from model:", extractedText);
+
+  return NextResponse.json({
+    text: "I couldn't understand the appointment details. Please try again with name, email, date, and time.",
+  });
+}
         if (
           appointmentData.name &&
           appointmentData.email &&
