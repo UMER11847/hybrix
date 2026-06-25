@@ -21,20 +21,29 @@ export default function ChatBot() {
     const res = await fetch("/api/chat", {
       method: "POST",
       body: JSON.stringify({
-        message,
+        messages: [{ role: "user", content: message }],
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
 
-    const data = await res.json();
+    const responseText = await res.text();
+    let data: { text?: string; response?: string; error?: string } = {};
+
+    if (responseText) {
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        data = { text: responseText };
+      }
+    }
 
     setChat((prev) => [
       ...prev,
       {
         role: "assistant",
-        content: data.response,
+        content: data.text || data.response || "Sorry, I could not generate a response right now.",
       },
     ]);
 

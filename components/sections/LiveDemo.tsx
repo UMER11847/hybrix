@@ -46,13 +46,22 @@ export default function LiveDemo() {
         body: JSON.stringify({ messages: updatedMessages }),
       })
 
-      const data = await res.json()
+      const responseText = await res.text()
+      let data: { text?: string; response?: string; error?: string } = {}
 
-      if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong. Please try again.')
+      if (responseText) {
+        try {
+          data = JSON.parse(responseText)
+        } catch {
+          data = { text: responseText }
+        }
       }
 
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.text }])
+      if (!res.ok) {
+        throw new Error(data.text || data.error || 'Something went wrong. Please try again.')
+      }
+
+      setMessages((prev) => [...prev, { role: 'assistant', content: data.text || data.response || 'Sorry, I could not generate a response right now.' }])
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to send message.'
       setError(message)

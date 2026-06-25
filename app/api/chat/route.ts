@@ -4,8 +4,34 @@ import fs from "fs";
 import path from "path";
 export const runtime = "nodejs";
 export const maxDuration = 60;
+export const dynamic = "force-dynamic";
+
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "openai/gpt-oss-120b:free";
+const OPENROUTER_TIMEOUT_MS = 20000;
+
 // Cache the knowledge data at module level (loads once, reused for all requests)
 let cachedBusinessData: string | null = null;
+
+async function callOpenRouter(messages: Array<{ role: "user" | "assistant" | "system"; content: string }>, maxTokens: number) {
+  const apiKey = process.env.OPENROUTER_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("OPENROUTER_API_KEY is missing on the server.");
+  }
+
+  return await Promise.race([
+    openrouter.chat.send({
+      chatRequest: {
+        model: OPENROUTER_MODEL,
+        messages: messages as any,
+        maxTokens,
+      },
+    }),
+    new Promise<never>((_, reject) => {
+      setTimeout(() => reject(new Error("OpenRouter request timed out.")), OPENROUTER_TIMEOUT_MS);
+    }),
+  ]);
+}
 
 async function getBusinessData(): Promise<string> {
   // Return cached data if already loaded
@@ -81,8 +107,14 @@ async function saveAppointment(
 
 export async function POST(req: Request) {
   try {
-    // 1. FIRST: Parse the request body
-    const body = await req.json();
+    let body: any;
+
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ text: "Invalid request body." }, { status: 400 });
+    }
+
     const { messages } = body;
 
     // Safety check: make sure messages array exists
@@ -115,13 +147,7 @@ If any information is missing, set needsInfo to true and list missing fields.`,
         { role: "user" as const, content: lastUserMessage },
       ];
 
-      const extractionResult = await openrouter.chat.send({
-        chatRequest: {
-          model: "openai/gpt-oss-120b:free",
-          messages: extractionMessages as any,
-          maxTokens: 200,
-        },
-      });
+      const extractionResult = await callOpenRouter(extractionMessages as any, 200);
 
       const extractedText =
         extractionResult.choices?.[0]?.message?.content || "{}";
@@ -218,13 +244,7 @@ Response Guidelines:
     const fullConversation = [systemPrompt, ...formattedHistory] as const;
 
     // 5. Send the structured history array to OpenRouter
-    const completion = await openrouter.chat.send({
-      chatRequest: {
-        model: "openai/gpt-oss-120b:free",
-        messages: fullConversation as any,
-        maxTokens: 250,
-      },
-    });
+    const completion = await callOpenRouter(fullConversation as any, 250);
 
     // 6. Return the response text back to your LiveDemo component
     const aiResponse =
@@ -234,9 +254,12 @@ Response Guidelines:
     return NextResponse.json({ text: aiResponse });
   } catch (error) {
     console.error("Error encountered in Chat Route:", error);
-    return NextResponse.json(
-      { text: "An error occurred while communicating with the server." },
-      { status: 500 }
-    );
+
+    const message =
+      error instanceof Error && error.message.includes("OPENROUTER_API_KEY")
+        ? "The chat service is not configured for this deployment yet."
+        : "The AI service is currently slow or unavailable. Please try again in a moment.";
+
+    return NextResponse.json({ text: message }, { status: 502 });
   }
 }
