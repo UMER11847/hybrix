@@ -255,11 +255,8 @@ Response Guidelines:
   } catch (error) {
     console.error("Error encountered in Chat Route:", error);
 
-    const message =
-      error instanceof Error && error.message.includes("OPENROUTER_API_KEY")
-        ? "The chat service is not configured for this deployment yet."
-        : "The AI service is currently slow or unavailable. Please try again in a moment.";
+    const fallbackMessage = `Hi! I’m HybrixAI’s assistant. I can help with our chatbot, voice agents, appointment booking, pricing, and industries we serve. For the fastest answer, you can also reach us at hybrixai@gmail.com.`;
 
-    return NextResponse.json({ text: message }, { status: 502 });
+    return NextResponse.json({ text: fallbackMessage }, { status: 502 });
   }
 }
