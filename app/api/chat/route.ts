@@ -9,6 +9,36 @@ export const dynamic = "force-dynamic";
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "openai/gpt-oss-120b:free";
 const OPENROUTER_TIMEOUT_MS = 20000;
 
+function buildLocalResponse(userMessage: string, businessData: string): string {
+  const lowerMessage = userMessage.toLowerCase();
+
+  if (lowerMessage.includes("pricing") || lowerMessage.includes("price") || lowerMessage.includes("plan")) {
+    return "HybrixAI offers starter, growth, pro, and enterprise packages. Starter starts at $249/month, Growth at $599/month, and Pro at $1,499/month. If you want, I can also point you to the pricing section.";
+  }
+
+  if (lowerMessage.includes("service") || lowerMessage.includes("offer") || lowerMessage.includes("what do you do")) {
+    return "We help businesses automate customer conversations with AI chatbots, voice agents, appointment booking, lead capture, and marketing automation. Our focus is on service businesses that want faster response times and fewer missed opportunities.";
+  }
+
+  if (lowerMessage.includes("industry") || lowerMessage.includes("sector")) {
+    return "We work with healthcare, real estate, salons, restaurants, automotive, and law firms. We tailor the experience to each vertical’s booking, lead capture, and support workflows.";
+  }
+
+  if (lowerMessage.includes("demo") || lowerMessage.includes("book") || lowerMessage.includes("appointment")) {
+    return "You can book a demo or consultation with our team directly from the site. I can also help you find the demo section if you want to jump there.";
+  }
+
+  if (lowerMessage.includes("contact") || lowerMessage.includes("email") || lowerMessage.includes("whatsapp")) {
+    return `You can reach us at ${businessData.includes("hybrixai@gmail.com") ? "hybrixai@gmail.com" : "our contact team"} or through WhatsApp chat.`;
+  }
+
+  if (lowerMessage.includes("benefit") || lowerMessage.includes("why")) {
+    return "The main benefits are faster response times, 24/7 availability, better lead capture, reduced missed calls, and lower operational overhead for your team.";
+  }
+
+  return `HybrixAI provides AI chatbots, voice agents, appointment automation, lead generation, and social media automation for service businesses. If you want, I can help you find the right section or explain pricing and features in more detail.`;
+}
+
 // Cache the knowledge data at module level (loads once, reused for all requests)
 let cachedBusinessData: string | null = null;
 
@@ -243,20 +273,27 @@ Response Guidelines:
     // Combine system instructions with recent history
     const fullConversation = [systemPrompt, ...formattedHistory] as const;
 
-    // 5. Send the structured history array to OpenRouter
-    const completion = await callOpenRouter(fullConversation as any, 250);
+    try {
+      // 5. Send the structured history array to OpenRouter
+      const completion = await callOpenRouter(fullConversation as any, 250);
 
-    // 6. Return the response text back to your LiveDemo component
-    const aiResponse =
-      completion.choices?.[0]?.message?.content ||
-      "Sorry, I couldn't formulate a proper response at the moment.";
+      // 6. Return the response text back to your LiveDemo component
+      const aiResponse =
+        completion.choices?.[0]?.message?.content ||
+        "Sorry, I couldn't formulate a proper response at the moment.";
 
-    return NextResponse.json({ text: aiResponse });
+      return NextResponse.json({ text: aiResponse });
+    } catch (error) {
+      console.error("OpenRouter failed, using local fallback response:", error);
+      const localResponse = buildLocalResponse(lastUserMessage, businessData);
+      return NextResponse.json({ text: localResponse });
+    }
   } catch (error) {
     console.error("Error encountered in Chat Route:", error);
 
     const fallbackMessage = `Hi! I’m HybrixAI’s assistant. I can help with our chatbot, voice agents, appointment booking, pricing, and industries we serve. For the fastest answer, you can also reach us at hybrixai@gmail.com.`;
 
-    return NextResponse.json({ text: fallbackMessage }, { status: 502 });
+    // Return a friendly fallback response as a normal JSON payload so the UI can display it.
+    return NextResponse.json({ text: fallbackMessage });
   }
 }

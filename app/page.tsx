@@ -20,21 +20,22 @@ export default function Home() {
       <main>
         
         <Navbar />
-        <Hero />
-        <PainPoints />
-        <Solutions />
-        <Industries />
-        <HowItWorks />
-        <LiveDemo />
-        <Benefits />
-        <Testimonials />
-        <CaseStudies />
-        <Pricing />
-        <Trust />
-        <About />
-        <DemoSection />
-        <FAQ />
-        <Footer />
+        <div id="hero" className="scroll-mt-24"><Hero /></div>
+        <div id="pain-points" className="scroll-mt-24"><PainPoints /></div>
+        <div id="solutions" className="scroll-mt-24"><Solutions /></div>
+        <div id="industries" className="scroll-mt-24"><Industries /></div>
+        <div id="how-it-works" className="scroll-mt-24"><HowItWorks /></div>
+        <div id="live-demo" className="scroll-mt-24"><LiveDemo /></div>
+        <div id="benefits" className="scroll-mt-24"><Benefits /></div>
+        <div id="testimonials" className="scroll-mt-24"><Testimonials /></div>
+        <div id="case-studies" className="scroll-mt-24"><CaseStudies /></div>
+        <div id="pricing" className="scroll-mt-24"><Pricing /></div>
+        <div id="trust" className="scroll-mt-24"><Trust /></div>
+        <div id="about" className="scroll-mt-24"><About /></div>
+        <div id="demo-section" className="scroll-mt-24"><DemoSection /></div>
+        <div id="faq" className="scroll-mt-24"><FAQ /></div>
+        <div id="footer" className="scroll-mt-24"><Footer /></div>
+        <ChatBot />
         <WhatsAppFloat />
       </main>
     </HybrixExperience>
